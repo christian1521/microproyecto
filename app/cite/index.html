@@ -242,6 +242,8 @@
                     resultsSection.classList.remove('fade-in');
                     void resultsSection.offsetWidth; 
                     resultsSection.classList.add('fade-in');
+
+                    resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
 

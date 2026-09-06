@@ -1,0 +1,6 @@
+outs:
+- md5: 7927ddd27faaa546eb87a2756f4bac74.dir
+  size: 440680228
+  nfiles: 10
+  hash: md5
+  path: model_scibert_citing_sentences

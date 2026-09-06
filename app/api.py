@@ -216,8 +216,8 @@ def predict(citing_sentence: str, type_model: Optional[str] = None, cited_paragr
 
     if cited_paragraphs and "[CITATION]" not in citing_sentence:
         raise ValueError(
-            "El texto 'citing_sentence' debe contener la etiqueta '[CITATION]' "
-            "cuando se proporciona 'cited_paragraphs'."
+            "El contexto de la cita debe contener la etiqueta '[CITATION]' "
+            "cuando se proporciona el párrafo del documento citado."
         )
 
     _load_model_if_needed()

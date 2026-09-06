@@ -215,7 +215,10 @@ def predict(citing_sentence: str, type_model: Optional[str] = None, cited_paragr
     """
 
     if cited_paragraphs and "[CITATION]" not in citing_sentence:
-        raise ValueError("El contexto de cita debe contener la etiqueta '[CITATION]' cuando se proporciona el párrafo del documento citado.")
+        raise ValueError(
+            "El texto 'citing_sentence' debe contener la etiqueta '[CITATION]' "
+            "cuando se proporciona 'cited_paragraphs'."
+        )
 
     _load_model_if_needed()
 
@@ -283,10 +286,19 @@ def health():
 
 
 @api_router.get("/citation-functions", status_code=200)
-def list_citation_functions():
-    """Devuelve el catálogo completo de las 9 funciones de cita soportadas,
-    con su Definition y Criteria -- útil para que la app web muestre esta
-    información sin necesidad de duplicarla en el frontend."""
+def list_citation_functions(function_name: Optional[str] = None):
+    """
+    Devuelve el catálogo de funciones de cita soportadas, con su Definition y Criteria.
+    """
+    if function_name:
+        info = CitationFunctionCatalog.get(function_name)
+        if info is None:
+            raise ValueError(
+                f"No se encontró la función de cita '{function_name}'. "
+                f"Funciones disponibles: {CitationFunctionCatalog.list_labels()}"
+            )
+        return {function_name: info.model_dump()}
+
     return {
         label: info.model_dump()
         for label, info in CitationFunctionCatalog.CITATION_FUNCTIONS.items()

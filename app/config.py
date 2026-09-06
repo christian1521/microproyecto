@@ -24,7 +24,7 @@ class Settings(BaseSettings):
         "https://localhost:8000",
     ]
 
-    PROJECT_NAME: str = "Banckchurn API"
+    PROJECT_NAME: str = "Citation Function Classification API"
     MODEL_DIR: str = "data/model_scibert_citing_sentences"
 
     model_config = SettingsConfigDict(case_sensitive=True)

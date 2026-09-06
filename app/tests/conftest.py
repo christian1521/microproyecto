@@ -17,11 +17,7 @@ _RULES = {
 
 
 def _fake_predict(citing_sentence: str, cited_paragraphs=None) -> dict:
-    """Reemplazo de app.api.predict() para tests -- no requiere torch,
-    transformers, ni el modelo real. Usa reglas simples por palabra clave
-    para que el resultado sea determinista y coincida con 'expected_label'
-    en test_data."""
-    predicted_label = "Background"  # valor por defecto si no matchea ninguna regla
+    predicted_label = "Background"
     for keyword, label in _RULES.items():
         if keyword in citing_sentence.lower():
             predicted_label = label
@@ -40,9 +36,6 @@ def _fake_predict(citing_sentence: str, cited_paragraphs=None) -> dict:
 
 
 def _fake_load_model_if_needed():
-    """Reemplazo de app.api._load_model_if_needed() -- evita el import real
-    de torch/transformers y deja las variables de estado en valores fijos,
-    para que /health también funcione sin el modelo real."""
     api_module._device = "cpu"
     api_module._id2label = {
         0: "Background",
@@ -55,7 +48,7 @@ def _fake_load_model_if_needed():
         7: "Gap",
         8: "Comparison",
     }
-    api_module._model = object()  # marcador no-None para que no reintente cargar
+    api_module._model = object()
     api_module._tokenizer = object()
 
 
@@ -85,9 +78,6 @@ def test_data() -> pd.DataFrame:
 
 @pytest.fixture()
 def client(monkeypatch) -> Generator:
-    # Reemplaza la función real de predicción y de carga del modelo ANTES
-    # de crear el TestClient, para que ningún código real de torch se
-    # ejecute en ningún momento durante el test.
     monkeypatch.setattr(api_module, "predict", _fake_predict)
     monkeypatch.setattr(api_module, "_load_model_if_needed", _fake_load_model_if_needed)
 

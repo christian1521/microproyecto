@@ -288,7 +288,7 @@
                     renderResults(data);
 
                 } catch (error) {
-                    errorEl.textContent = "Error al conectar con la API: " + error.message;
+                    errorEl.textContent = error.message;
                     errorEl.classList.remove('hidden');
                     resultsGrid.classList.add('hidden');
                 } finally {

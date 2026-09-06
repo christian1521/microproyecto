@@ -266,6 +266,8 @@ def predict(citing_sentence: str, type_model: Optional[str] = None, cited_paragr
 
 class CitationRequest(BaseModel):
     citing_sentence: str
+    type_model: Optional[str] = None
+    cited_paragraphs: Optional[str] = None
 
 
 api_router = APIRouter()

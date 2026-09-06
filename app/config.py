@@ -5,47 +5,42 @@ from typing import List, cast
 
 from loguru import logger
 from pydantic import AnyHttpUrl
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
-# Nivel del logger
+
 class LoggingSettings(BaseSettings):
-    LOGGING_LEVEL: int = logging.INFO  # logging levels are type int
+    LOGGING_LEVEL: int = logging.INFO
 
-# Configuración de raíz de la ruta, logger, CORS, nombre 
+
 class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
 
-    # Meta
     logging: LoggingSettings = LoggingSettings()
 
-    # BACKEND_CORS_ORIGINS is a comma-separated list of origins
-    # e.g: http://localhost,http://localhost:4200,http://localhost:3000
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = [
-        "http://localhost:3000",  # type: ignore
-        "http://localhost:8000",  # type: ignore
-        "https://localhost:3000",  # type: ignore
-        "https://localhost:8000",  # type: ignore
+        "http://localhost:3000",
+        "http://localhost:8000",
+        "https://localhost:3000",
+        "https://localhost:8000",
     ]
 
     PROJECT_NAME: str = "Banckchurn API"
     MODEL_DIR: str = "data/model_scibert_citing_sentences"
 
-    class Config:
-        case_sensitive = True
+    model_config = SettingsConfigDict(case_sensitive=True)
 
-# Intercepción de mensajes de loggers 
-# See: https://loguru.readthedocs.io/en/stable/overview.html#entirely-compatible-with-standard-logging  
+
 class InterceptHandler(logging.Handler):
-    def emit(self, record: logging.LogRecord) -> None:  # pragma: no cover
-        # Get corresponding Loguru level if it exists
+    def emit(self, record: logging.LogRecord) -> None:
+
         try:
             level = logger.level(record.levelname).name
         except ValueError:
             level = str(record.levelno)
 
-        # Find caller from where originated the logged message
+
         frame, depth = logging.currentframe(), 2
-        while frame.f_code.co_filename == logging.__file__:  # noqa: WPS609
+        while frame.f_code.co_filename == logging.__file__:
             frame = cast(FrameType, frame.f_back)
             depth += 1
 
@@ -54,7 +49,7 @@ class InterceptHandler(logging.Handler):
             record.getMessage(),
         )
 
-# Configuración de loggers usando uvicorn
+
 def setup_app_logging(config: Settings) -> None:
     """Prepare custom logging for our application."""
 

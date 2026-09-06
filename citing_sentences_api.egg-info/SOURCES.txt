@@ -1,0 +1,13 @@
+pyproject.toml
+app/__init__.py
+app/api.py
+app/config.py
+app/main.py
+app/tests/__init__.py
+app/tests/conftest.py
+app/tests/test_api.py
+citing_sentences_api.egg-info/PKG-INFO
+citing_sentences_api.egg-info/SOURCES.txt
+citing_sentences_api.egg-info/dependency_links.txt
+citing_sentences_api.egg-info/requires.txt
+citing_sentences_api.egg-info/top_level.txt

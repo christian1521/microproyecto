@@ -5,11 +5,46 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app import main as main_module
+from app import api as api_module
 
 
-class FakeClassifier:
-    device = "cpu"
-    id2label = {
+_RULES = {
+    "adopt": "Application",
+    "confirms": "Evidence",
+    "fails": "Gap",
+    "compare": "Comparison",
+}
+
+
+def _fake_predict(citing_sentence: str, cited_paragraphs=None) -> dict:
+    """Reemplazo de app.api.predict() para tests -- no requiere torch,
+    transformers, ni el modelo real. Usa reglas simples por palabra clave
+    para que el resultado sea determinista y coincida con 'expected_label'
+    en test_data."""
+    predicted_label = "Background"  # valor por defecto si no matchea ninguna regla
+    for keyword, label in _RULES.items():
+        if keyword in citing_sentence.lower():
+            predicted_label = label
+            break
+
+    return {
+        "predicted_label": predicted_label,
+        "confidence": 0.87,
+        "used_context": bool(cited_paragraphs),
+        "all_probabilities": {
+            predicted_label: 0.87,
+            "Background": 0.08,
+            "Comparison": 0.05,
+        },
+    }
+
+
+def _fake_load_model_if_needed():
+    """Reemplazo de app.api._load_model_if_needed() -- evita el import real
+    de torch/transformers y deja las variables de estado en valores fijos,
+    para que /health también funcione sin el modelo real."""
+    api_module._device = "cpu"
+    api_module._id2label = {
         0: "Background",
         1: "Further Reading",
         2: "Evidence",
@@ -20,31 +55,8 @@ class FakeClassifier:
         7: "Gap",
         8: "Comparison",
     }
-
-    _RULES = {
-        "adopt": "Application",
-        "confirms": "Evidence",
-        "fails": "Gap",
-        "compare": "Comparison",
-    }
-
-    def predict(self, citing_sentence: str, cited_paragraphs=None):
-        predicted_label = "Background"  # valor por defecto si no matchea ninguna regla
-        for keyword, label in self._RULES.items():
-            if keyword in citing_sentence.lower():
-                predicted_label = label
-                break
-
-        return {
-            "predicted_label": predicted_label,
-            "confidence": 0.87,
-            "used_context": bool(cited_paragraphs),
-            "all_probabilities": [
-                {"label": predicted_label, "probability": 0.87},
-                {"label": "Background", "probability": 0.08},
-                {"label": "Comparison", "probability": 0.05},
-            ],
-        }
+    api_module._model = object()  # marcador no-None para que no reintente cargar
+    api_module._tokenizer = object()
 
 
 @pytest.fixture(scope="module")
@@ -72,8 +84,12 @@ def test_data() -> pd.DataFrame:
 
 
 @pytest.fixture()
-def client() -> Generator:
+def client(monkeypatch) -> Generator:
+    # Reemplaza la función real de predicción y de carga del modelo ANTES
+    # de crear el TestClient, para que ningún código real de torch se
+    # ejecute en ningún momento durante el test.
+    monkeypatch.setattr(api_module, "predict", _fake_predict)
+    monkeypatch.setattr(api_module, "_load_model_if_needed", _fake_load_model_if_needed)
+
     with TestClient(main_module.app) as _client:
-        main_module.classifier = FakeClassifier()
         yield _client
-        main_module.classifier = None

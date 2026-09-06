@@ -304,11 +304,10 @@ def list_citation_functions(function_name: Optional[str] = None):
         for label, info in CitationFunctionCatalog.CITATION_FUNCTIONS.items()
     }
 
-
 @api_router.post("/classify-citation", status_code=200)
 async def classify_citation(payload: CitationRequest):
     try:
-        result = predict(payload.citing_sentence)
+        result = predict(payload.citing_sentence, type_model=payload.type_model, cited_paragraphs=payload.cited_paragraphs)
     except FileNotFoundError as e:
         raise HTTPException(status_code=503, detail=str(e))
     except ValueError as e:

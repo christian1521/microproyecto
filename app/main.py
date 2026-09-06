@@ -42,7 +42,7 @@ def index(request: Request) -> Any:
 app.include_router(api_router, prefix=settings.API_V1_STR)
 app.include_router(root_router)
 
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve()
 CITE_DIR = BASE_DIR.parent / "cite"
 
 if CITE_DIR.exists():

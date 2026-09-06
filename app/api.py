@@ -207,18 +207,30 @@ class CitationFunctionCatalog:
         return list(cls.CITATION_FUNCTIONS.keys())
 
 
-def predict(citing_sentence: str, type_model: Optional[str] = None, cited_paragraphs: Optional[list] = None) -> dict:
+def predict(citing_sentence: str, type_model: Optional[str] = None, cited_paragraphs: Optional[str] = None) -> dict:
     """
     Punto único de inferencia.
 
     El resultado incluye, la etiqueta y confianza, la definition y criterio de la función de cita predicha (según CitationFunctionCatalog).
     """
+
+    if cited_paragraphs and "[CITATION]" not in citing_sentence:
+        raise ValueError("El contexto de cita debe contener la etiqueta '[CITATION]' cuando se proporciona el párrafo del documento citado.")
+
     _load_model_if_needed()
 
     import torch
 
+    if cited_paragraphs:
+        text_to_classify = (
+            f"{citing_sentence} CONTEXT: In the text, the [CITATION] tag "
+            f"refers to: {cited_paragraphs}"
+        )
+    else:
+        text_to_classify = citing_sentence
+
     inputs = _tokenizer(
-        citing_sentence,
+        text_to_classify,
         truncation=True,
         padding=True,
         max_length=MAX_LENGTH,
@@ -287,5 +299,7 @@ async def classify_citation(payload: CitationRequest):
         result = predict(payload.citing_sentence)
     except FileNotFoundError as e:
         raise HTTPException(status_code=503, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
     return result

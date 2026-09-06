@@ -46,7 +46,7 @@
             <div class="flex items-start">
                 <i class="fa-solid fa-circle-info text-blue-600 mt-1 mr-3 text-lg"></i>
                 <p class="text-slate-700 text-sm md:text-base leading-relaxed">
-                    Clasificación de la función retórica de una cita académica. Pega un contexto de cita en inglés y, opcionalmente, los párrafos del documento citado, para predecir el propósito discursivo utilizando la API de clasificación.
+                    Clasificación de la función retórica de una cita académica. Pega un contexto de cita en inglés y, opcionalmente, el párrafo del documento citado, para predecir el propósito discursivo utilizando la API de clasificación.
                 </p>
             </div>
         </div>
@@ -221,11 +221,12 @@
                         body: JSON.stringify(payload)
                     });
 
+                    const data = await response.json();
+
                     if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
+                        throw new Error(data.detail);
                     }
 
-                    const data = await response.json();
                     renderResults(data);
 
                 } catch (error) {

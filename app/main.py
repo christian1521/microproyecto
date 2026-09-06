@@ -1,14 +1,16 @@
+import os
+from pathlib import Path
 from typing import Any
 
 from fastapi import APIRouter, FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from loguru import logger
 
 from app.api import api_router
 from app.config import settings, setup_app_logging
 
-# setup logging as early as possible
 setup_app_logging(config=settings)
 
 
@@ -18,16 +20,17 @@ app = FastAPI(
 
 root_router = APIRouter()
 
-# Cuerpo de la respuesta en la raíz
 @root_router.get("/")
 def index(request: Request) -> Any:
-    """Basic HTML response."""
     body = (
         "<html>"
         "<body style='padding: 10px;'>"
         "<h1>Citation Function Classification API</h1>"
         "<div>"
         "Check the docs: <a href='/docs'>here</a>"
+        "</div>"
+        "<div style='margin-top: 15px; font-weight: bold;'>"
+        "Citation Function Classification: <a href='/cite/'>Open App</a>"
         "</div>"
         "</body>"
         "</html>"
@@ -39,7 +42,14 @@ def index(request: Request) -> Any:
 app.include_router(api_router, prefix=settings.API_V1_STR)
 app.include_router(root_router)
 
-# Set all CORS enabled origins
+CITE_DIR = Path("cite")
+
+if CITE_DIR.exists():
+    app.mount("/cite", StaticFiles(directory=CITE_DIR, html=True), name="cite_app")
+else:
+    logger.warning(f"El directorio '{CITE_DIR}' no existe. La aplicación frontend no se montará.")
+
+
 if settings.BACKEND_CORS_ORIGINS:
     app.add_middleware(
         CORSMiddleware,
@@ -51,9 +61,7 @@ if settings.BACKEND_CORS_ORIGINS:
 
 
 if __name__ == "__main__":
-    # Use this for debugging purposes only
     logger.warning("Running in development mode. Do not run like this in production.")
     import uvicorn
 
-    # ejecución del servidor - host para ejecutar en servidor 
     uvicorn.run(app, host="0.0.0.0", port=8001, log_level="debug")

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificador de Funciones de Cita</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <nav class="bg-blue-900 text-white p-4 shadow-md">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <h1 class="text-xl font-semibold tracking-wide">
+                <i class="fa-solid fa-book-open-reader mr-2"></i>
+                CiteAnalyzer
+            </h1>
+            <span class="text-sm font-light text-blue-200">Citation Function Classification</span>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto p-6 mt-6">
+        
+        <div class="mb-8 bg-blue-50 border-l-4 border-blue-600 p-5 rounded-r-xl shadow-sm">
+            <div class="flex items-start">
+                <i class="fa-solid fa-circle-info text-blue-600 mt-1 mr-3 text-lg"></i>
+                <p class="text-slate-700 text-sm md:text-base leading-relaxed">
+                    Clasificación de la función retórica de una cita académica. Pega un contexto de cita en inglés y, opcionalmente, los párrafos del documento citado, para predecir el propósito discursivo utilizando la API de clasificación.
+                </p>
+            </div>
+        </div>
+
+        <section class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 mb-8">
+            <h2 class="text-lg font-bold text-slate-700 mb-4 border-b pb-2">Configuración de Análisis</h2>
+            
+            <form id="analysis-form" class="space-y-6">
+                <div>
+                    <label for="citation-text" class="block text-sm font-medium text-slate-700 mb-2">
+                        Contexto de Cita (Citation Context) en Inglés:
+                    </label>
+                    <textarea id="citation-text" rows="3" 
+                        class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                        required></textarea>
+                    <div class="mt-2 flex justify-end">
+                        <button type="button" id="load-example" class="text-sm text-blue-600 hover:text-blue-800 transition-colors font-medium flex items-center">
+                            <i class="fa-solid fa-paste mr-1.5"></i> Cargar texto de ejemplo
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="cited-paragraphs" class="block text-sm font-medium text-slate-700 mb-2">
+                        Párrafos del Documento Citado (Opcional):
+                    </label>
+                    <textarea id="cited-paragraphs" rows="4" 
+                        class="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                        placeholder="Pega aquí el texto recuperado del documento citado..."></textarea>
+                </div>
+
+                <div>
+                    <label for="model-select" class="block text-sm font-medium text-slate-700 mb-2">
+                        Selecciona el Modelo Clasificador:
+                    </label>
+                    <div class="relative">
+                        <select id="model-select" class="w-full md:w-1/2 p-3 bg-slate-50 border border-slate-300 rounded-lg appearance-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="scibert-finetuning" selected>SciBERT fine-tuning</option>
+                            <option value="bert">BERT</option>
+                            <option value="qwen3-14b">Qwen3-14B</option>
+                            <option value="mistral-mini">Mistral -mini</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 md:right-1/2 flex items-center px-4 text-slate-700">
+                            <i class="fa-solid fa-chevron-down text-sm"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center">
+                    <button type="submit" id="submit-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-6 rounded-lg shadow-sm transition-colors flex items-center">
+                        <i class="fa-solid fa-microchip mr-2"></i> Analizar Cita
+                    </button>
+                    <div id="loading-spinner" class="ml-4 items-center text-blue-600 hidden">
+                        <div class="loader mr-2"></div>
+                        <span class="text-sm font-medium">Procesando petición en la API...</span>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section id="results-section" class="hidden fade-in space-y-6">
+            <div id="error-message" class="hidden bg-red-50 border-l-4 border-red-500 p-4 rounded text-red-700 text-sm"></div>
+            
+            <div id="results-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 md:col-span-1 h-fit">
+                    <h2 class="text-lg font-bold text-slate-700 mb-4 border-b pb-2">Predicción Principal</h2>
+                    <div class="flex flex-col items-center justify-center py-2">
+                        <div id="predicted-badge" class="bg-blue-100 text-blue-800 text-sm font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider text-center">
+                            <i class="fa-solid fa-bullseye mr-1"></i> <span id="predicted-function"></span>
+                        </div>
+                        
+                        <div class="w-full text-left mb-6 space-y-4">
+                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                                <h3 class="text-xs font-bold text-slate-800 uppercase mb-1">Definition</h3>
+                                <p id="predicted-desc" class="text-sm text-slate-600 leading-relaxed"></p>
+                            </div>
+                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                                <h3 class="text-xs font-bold text-slate-800 uppercase mb-1">Criteria</h3>
+                                <p id="predicted-criteria" class="text-sm text-slate-600 leading-relaxed italic"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="w-full pt-4 border-t border-slate-100">
+                            <div class="flex justify-between text-xs font-medium text-slate-500 mb-1">
+                                <span>Puntuación de Confianza</span>
+                                <span id="confidence-score" class="font-bold"></span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-2.5">
+                                <div id="confidence-bar" class="bg-blue-500 h-2.5 rounded-full" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 md:col-span-2">
+                    <div class="flex justify-between items-center mb-4 border-b pb-2">
+                        <h2 class="text-lg font-bold text-slate-700">Distribución de Probabilidades</h2>
+                        <span class="text-xs font-medium bg-slate-100 text-slate-600 px-2 py-1 rounded">Todas las categorías</span>
+                    </div>
+                    
+                    <div id="probabilities-container" class="space-y-4 mt-2">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('analysis-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const spinner = document.getElementById('loading-spinner');
+            const resultsSection = document.getElementById('results-section');
+            const resultsGrid = document.getElementById('results-grid');
+            const errorEl = document.getElementById('error-message');
+            
+            const citationText = document.getElementById('citation-text');
+            const citedParagraphs = document.getElementById('cited-paragraphs');
+            const modelSelect = document.getElementById('model-select');
+            const loadExampleBtn = document.getElementById('load-example');
+
+            const predictedBadge = document.getElementById('predicted-badge');
+            const predictedFunctionEl = document.getElementById('predicted-function');
+            const predictedDescEl = document.getElementById('predicted-desc');
+            const predictedCriteriaEl = document.getElementById('predicted-criteria');
+            const confidenceScoreEl = document.getElementById('confidence-score');
+            const confidenceBarEl = document.getElementById('confidence-bar');
+            const probabilitiesContainer = document.getElementById('probabilities-container');
+
+            const colorMap = {
+                "Background": { badge: "bg-blue-100 text-blue-800", bar: "bg-blue-500" },
+                "Gap": { badge: "bg-orange-100 text-orange-800", bar: "bg-orange-500" },
+                "Basis": { badge: "bg-purple-100 text-purple-800", bar: "bg-purple-500" },
+                "Comparison": { badge: "bg-amber-100 text-amber-800", bar: "bg-amber-500" },
+                "Application": { badge: "bg-emerald-100 text-emerald-800", bar: "bg-emerald-500" },
+                "Improvement / Modification": { badge: "bg-teal-100 text-teal-800", bar: "bg-teal-500" },
+                "Evidence": { badge: "bg-rose-100 text-rose-800", bar: "bg-rose-500" },
+                "Identification of the Originator": { badge: "bg-indigo-100 text-indigo-800", bar: "bg-indigo-500" },
+                "Further Reading": { badge: "bg-slate-200 text-slate-800", bar: "bg-slate-500" }
+            };
+
+            const defaultColor = { badge: "bg-slate-100 text-slate-800", bar: "bg-slate-500" };
+
+            loadExampleBtn.addEventListener('click', () => {
+                citationText.value = "Similar to the method proposed in [CITATION], we adopt a transformer-based architecture.";
+            });
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                if(!citationText.value.trim()) return;
+
+                submitBtn.disabled = true;
+                submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                spinner.classList.remove('hidden');
+                spinner.classList.add('flex');
+                resultsSection.classList.add('hidden');
+                errorEl.classList.add('hidden');
+                resultsGrid.classList.remove('hidden');
+
+                const payload = {
+                    citing_sentence: citationText.value,
+                    type_model: modelSelect.value,
+                    cited_paragraphs: citedParagraphs.value || ""
+                };
+
+                try {
+                    const response = await fetch('/api/v1/classify-citation', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    renderResults(data);
+
+                } catch (error) {
+                    errorEl.textContent = "Error al conectar con la API: " + error.message;
+                    errorEl.classList.remove('hidden');
+                    resultsGrid.classList.add('hidden');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    spinner.classList.add('hidden');
+                    spinner.classList.remove('flex');
+                    
+                    resultsSection.classList.remove('hidden');
+                    resultsSection.classList.remove('fade-in');
+                    void resultsSection.offsetWidth; 
+                    resultsSection.classList.add('fade-in');
+                }
+            });
+
+            function renderResults(data) {
+                const label = data.predicted_label;
+                const styling = colorMap[label] || defaultColor;
+
+                predictedFunctionEl.textContent = label;
+                predictedBadge.className = `${styling.badge} text-sm font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider text-center`;
+                
+                predictedDescEl.textContent = data.definition || "No disponible";
+                predictedCriteriaEl.textContent = data.criteria || "No disponible";
+
+                const confPercent = (data.confidence * 100).toFixed(2);
+                confidenceScoreEl.textContent = `${confPercent}%`;
+                confidenceBarEl.style.width = `${confPercent}%`;
+                confidenceBarEl.className = `${styling.bar} h-2.5 rounded-full`;
+
+                const sortedProbs = Object.entries(data.all_probabilities)
+                    .sort((a, b) => b[1] - a[1]);
+
+                probabilitiesContainer.innerHTML = '';
+                
+                sortedProbs.forEach(([funcName, probValue]) => {
+                    const probPercent = (probValue * 100).toFixed(2);
+                    const funcStyle = colorMap[funcName] || defaultColor;
+                    
+                    const html = `
+                        <div class="mb-3 group">
+                            <div class="flex justify-between items-center text-xs font-bold mb-1.5">
+                                <span class="text-slate-700">${funcName}</span>
+                                <span class="text-slate-600 bg-slate-100 px-2 py-0.5 rounded">${probPercent}%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-sm h-3 border border-slate-200 overflow-hidden">
+                                <div class="${funcStyle.bar} h-full transition-all duration-1000 ease-out" style="width: ${probPercent}%"></div>
+                            </div>
+                        </div>
+                    `;
+                    probabilitiesContainer.innerHTML += html;
+                });
+            }
+        });
+    </script>
+</body>
+</html>

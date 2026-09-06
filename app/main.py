@@ -42,7 +42,8 @@ def index(request: Request) -> Any:
 app.include_router(api_router, prefix=settings.API_V1_STR)
 app.include_router(root_router)
 
-CITE_DIR = Path("cite")
+BASE_DIR = Path(__file__).resolve().parent
+CITE_DIR = BASE_DIR.parent / "cite"
 
 if CITE_DIR.exists():
     app.mount("/cite", StaticFiles(directory=CITE_DIR, html=True), name="cite_app")

@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "citing-sentences-api"   # The pip package name (e.g., pip install citing-sentences-api)
+version = "0.1.0"
+description = "FastAPI and SciBERT model service for citing sentences"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+    { name = "grupo24", email = "grupo24@uniandes.edu.co" }
+]
+# Populate dependencies from your requirements.txt
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+    "torch",
+    "transformers",
+    # Add other runtime dependencies from your requirements.txt here
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "httpx",
+]
+typing = [
+    "mypy",
+]
+
+[tool.setuptools.packages.find]
+# Ensure only 'app' is bundled into the .whl
+where = ["."]
+include = ["app*"]
+exclude = ["data*", "experimentos-mlflow*", "images*"]

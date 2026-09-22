@@ -64,12 +64,19 @@ def index(request: Request) -> Any:
                 flex-wrap: wrap;
             }
             .btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
                 text-decoration: none;
                 padding: 12px 25px;
                 border-radius: 6px;
                 color: white;
                 font-weight: bold;
                 transition: background-color 0.3s, transform 0.2s;
+            }
+            .btn-icon {
+                width: 22px;
+                height: 22px;
             }
             .btn:hover { transform: translateY(-2px); }
             .btn-api { background-color: #3b82f6; }
@@ -90,8 +97,19 @@ def index(request: Request) -> Any:
             </div>
             
             <div class="buttons">
-                <a href="/docs" class="btn btn-api">📚 Abrir Documentación API</a>
-                <a href="/cite/" class="btn btn-dash">📊 Abrir Tablero (Dashboard)</a>
+                <a href="/docs" class="btn btn-api">
+                    <!-- Icono SVG integrado para el API -->
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    Abrir Documentación del API
+                </a>
+                <a href="/cite/" class="btn btn-dash">
+                    <!-- Imagen favicon.svg para el tablero -->
+                    <img src="favicon.svg" alt="Icono Tablero" class="btn-icon">
+                    Abrir el Tablero (Aplicación)
+                </a>
             </div>
         </div>
     </body>

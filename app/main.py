@@ -22,19 +22,81 @@ root_router = APIRouter()
 
 @root_router.get("/")
 def index(request: Request) -> Any:
-    body = (
-        "<html>"
-        "<body style='padding: 10px;'>"
-        "<h1>Citation Function Classification API</h1>"
-        "<div>"
-        "Check the docs: <a href='/docs'>here</a>"
-        "</div>"
-        "<div style='margin-top: 15px; font-weight: bold;'>"
-        "Citation Function Classification: <a href='/cite/'>Open App</a>"
-        "</div>"
-        "</body>"
-        "</html>"
-    )
+    body = """
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CiteAnalyzer - Inicio</title>
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f8f9fa;
+                color: #212529;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            .container {
+                background-color: #ffffff;
+                padding: 40px;
+                border-radius: 12px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                max-width: 600px;
+                width: 90%;
+            }
+            h1 { color: #2c3e50; margin-bottom: 5px; }
+            h2 { color: #34495e; font-size: 1.1rem; font-weight: normal; margin-top: 0; margin-bottom: 25px; }
+            .info {
+                color: #6c757d;
+                font-size: 1rem;
+                line-height: 1.6;
+                margin-bottom: 35px;
+            }
+            .buttons {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+            .btn {
+                text-decoration: none;
+                padding: 12px 25px;
+                border-radius: 6px;
+                color: white;
+                font-weight: bold;
+                transition: background-color 0.3s, transform 0.2s;
+            }
+            .btn:hover { transform: translateY(-2px); }
+            .btn-api { background-color: #3b82f6; }
+            .btn-api:hover { background-color: #2563eb; }
+            .btn-dash { background-color: #10b981; }
+            .btn-dash:hover { background-color: #059669; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>CiteAnalyzer</h1>
+            <h2>Clasificación de la función de cita (Citation Function Classification)</h2>
+            
+            <div class="info">
+                <strong>Grupo 24 - Proyecto Desarrollo de Soluciones</strong><br>
+                Christian Alberto Torres Manigua<br>
+                Fredy Alexander Gamez Rodriguez
+            </div>
+            
+            <div class="buttons">
+                <a href="/docs" class="btn btn-api">📚 Abrir Documentación API</a>
+                <a href="/cite/" class="btn btn-dash">📊 Abrir Tablero (Dashboard)</a>
+            </div>
+        </div>
+    </body>
+    </html>
+    """
 
     return HTMLResponse(content=body)
 

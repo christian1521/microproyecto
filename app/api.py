@@ -11,7 +11,8 @@ from app import __version__
 
 logger = logging.getLogger("citation_api")
 
-MODEL_DIR = Path(os.environ.get("MODEL_DIR", "./data/model_scibert_citing_sentences"))
+MODEL_DIR_SCIBERT = Path(os.environ.get("MODEL_DIR", "./data/model_scibert_citing_sentences"))
+MODEL_DIR_BERT = Path(os.environ.get("MODEL_DIR", "./data/model_bert_citing_sentences"))
 MAX_LENGTH = int(os.environ.get("MAX_LENGTH", "128"))
 
 # --------------------------------------------------------------------
@@ -19,43 +20,70 @@ MAX_LENGTH = int(os.environ.get("MAX_LENGTH", "128"))
 # este módulo. Esto evita que 'import app.api' obligue a tener torch y
 # transformers instalados solo para poder probar la estructura de la API.
 # --------------------------------------------------------------------
-_tokenizer = None
-_model = None
-_id2label: Optional[dict] = None
+_tokenizer_scibert = None
+_model_scibert = None
+_id2label_scibert: Optional[dict] = None
+_tokenizer_bert = None
+_model_bert = None
+_id2label_bert: Optional[dict] = None
 _device: str = "cpu"
 
 
 def _load_model_if_needed():
     """Carga el modelo real la primera vez que se necesita. Los tests
     pueden monkeypatchear esta función para evitar requerir torch."""
-    global _tokenizer, _model, _id2label, _device
+    global _tokenizer_scibert, _model_scibert, _tokenizer_bert, _model_bert, _id2label_scibert, _id2label_bert, _device
 
-    if _model is not None:
-        return
+    if _model_scibert is None:
+        import torch
+        from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
-    import torch
-    from transformers import AutoTokenizer, AutoModelForSequenceClassification
+        if not (MODEL_DIR_SCIBERT / "config.json").exists():
+            raise FileNotFoundError(f"No se encontró 'config.json' en {MODEL_DIR_SCIBERT}.")
 
-    if not (MODEL_DIR / "config.json").exists():
-        raise FileNotFoundError(f"No se encontró 'config.json' en {MODEL_DIR}.")
+        _device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    logger.info(f"Cargando modelo desde: {MODEL_DIR}")
-    _device = "cuda" if torch.cuda.is_available() else "cpu"
+        logger.info(f"Cargando modelo desde: {MODEL_DIR_SCIBERT}")
 
-    _tokenizer = AutoTokenizer.from_pretrained(str(MODEL_DIR))
-    _model = AutoModelForSequenceClassification.from_pretrained(str(MODEL_DIR))
-    _model.to(_device)
-    _model.eval()
+        _tokenizer_scibert = AutoTokenizer.from_pretrained(str(MODEL_DIR_SCIBERT))
+        _model_scibert = AutoModelForSequenceClassification.from_pretrained(str(MODEL_DIR_SCIBERT))
+        _model_scibert.to(_device)
+        _model_scibert.eval()
 
-    label_mapping_path = MODEL_DIR / "label_mapping.json"
-    if label_mapping_path.exists():
-        with open(label_mapping_path, "r", encoding="utf-8") as f:
-            _id2label = {int(k): v for k, v in json.load(f)["id2label"].items()}
-    else:
-        _id2label = {int(k): v for k, v in _model.config.id2label.items()}
+        label_mapping_path = MODEL_DIR_SCIBERT / "label_mapping.json"
+        if label_mapping_path.exists():
+            with open(label_mapping_path, "r", encoding="utf-8") as f:
+                _id2label_scibert = {int(k): v for k, v in json.load(f)["id2label"].items()}
+        else:
+            _id2label_scibert = {int(k): v for k, v in _model_scibert.config.id2label.items()}
 
-    logger.info(f"Modelo cargado en dispositivo: {_device}")
-    logger.info(f"Etiquetas: {list(_id2label.values())}")
+        logger.info(f"Modelo SCIBERT cargado en dispositivo: {_device}")
+        logger.info(f"Etiquetas: {list(_id2label_scibert.values())}")
+
+
+    if _model_bert is None:
+        import torch
+        from transformers import AutoTokenizer, AutoModelForSequenceClassification
+
+        if not (MODEL_DIR_BERT / "config.json").exists():
+            raise FileNotFoundError(f"No se encontró 'config.json' en {MODEL_DIR_BERT}.")
+
+        _device = "cuda" if torch.cuda.is_available() else "cpu"
+
+        _tokenizer_bert = AutoTokenizer.from_pretrained(str(MODEL_DIR_BERT))
+        _model_bert = AutoModelForSequenceClassification.from_pretrained(str(MODEL_DIR_BERT))
+        _model_bert.to(_device)
+        _model_bert.eval()
+
+        label_mapping_path = MODEL_DIR_BERT / "label_mapping.json"
+        if label_mapping_path.exists():
+            with open(label_mapping_path, "r", encoding="utf-8") as f:
+                _id2label_bert = {int(k): v for k, v in json.load(f)["id2label"].items()}
+        else:
+            _id2label_bert = {int(k): v for k, v in _model_bert.config.id2label.items()}
+
+        logger.info(f"Modelo BERT cargado en dispositivo: {_device}")
+        logger.info(f"Etiquetas: {list(_id2label_bert.values())}")
 
 
 # --------------------------------------------------------------------
@@ -231,6 +259,16 @@ def predict(citing_sentence: str, type_model: Optional[str] = None, cited_paragr
         )
     else:
         text_to_classify = citing_sentence
+
+
+    if type_model == "bert":
+        _tokenizer = _tokenizer_bert
+        _model = _model_bert
+        _id2label = _id2label_bert
+    else:
+        _tokenizer = _tokenizer_scibert
+        _model = _model_scibert
+        _id2label = _id2label_scibert
 
     inputs = _tokenizer(
         text_to_classify,

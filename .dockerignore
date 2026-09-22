@@ -1,0 +1,34 @@
+# Control de versiones
+.git
+.gitignore
+
+# Datos y modelos versionados con DVC (se montan como Volume, no van en la imagen)
+.dvc
+.dvcignore
+data/
+*.dvc
+
+# Ejemplos de referencia y experimentos (no son parte del servicio)
+example-docker-api/
+example-docker-dash/
+experimentos-mlflow/
+mlruns/
+*.ipynb
+
+# Empaquetado y caches de Python
+dist/
+build/
+*.egg-info/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+.tox/
+
+# Entorno local
+.env
+*.env
+.vscode/
+.idea/

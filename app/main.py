@@ -29,6 +29,7 @@ def index(request: Request) -> Any:
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CiteAnalyzer - Inicio</title>
+        <link rel="icon" href="app/cite/favicon.svg" type="image/svg+xml">
         <style>
             body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

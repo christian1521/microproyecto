@@ -15,7 +15,7 @@ El proyecto **CiteAnalyzer** responde esta pregunta:
 >
 >  Para ello, asigna a cada contexto de cita una de nueve funciones: `Background`, `Gap`, `Basis`, `Comparison`, `Application`, `Improvement/Modification`, `Evidence`, `Identification of the Originator` y `Further Reading`.
 
-Se incorporan estos componentes para crear una solución integral para uso de usuario final:
+Se contemplan estos componentes para crear una solución completa para el usuario final:
 
 - **Datos:** Dataset SDCF (arXiv) con 707.225 frases de cita después de limpieza. Versionado DVC en AWS-S3.
 - **Modelos:** BERT y SciBERT con *fine-tuning*, con varios experimentos registrados en MLflow. 

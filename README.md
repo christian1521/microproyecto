@@ -3,8 +3,8 @@
 Proyecto Desarrollo de Soluciones - MAIA Uniandes - **Grupo 24**
 
 ```ini
-Christian Alberto Torres Manigua - ca.torres@uniandes.edu.co
-Fredy Alexander Gamez Rodriguez - fredygamez@uniandes.edu.co
+Christian Alberto Torres Manigua # ca.torres@uniandes.edu.co
+Fredy Alexander Gamez Rodriguez  # fredygamez@uniandes.edu.co
 ```
 
 Cuando se escribe un artículo científico, no siempre queda claro para qué se cita un trabajo previo. 
@@ -17,16 +17,16 @@ El proyecto **CiteAnalyzer** responde esta pregunta:
 
 Se incorporan estos componentes para crear una solución integral para uso de usuario final:
 
-- **Datos:** Dataset SDCF (arXiv) con 707.225 oraciones citantes después de limpieza. Versionado con DVC en AWS-S3.
-- **Modelos:** SciBERT y BERT con *fine-tuning*, con experimentos registrados en MLflow. 
-- **Solución Web Interactiva:** API FastAPI y Tablero Web desplegados con Docker via Railway.
+- **Datos:** Dataset SDCF (arXiv) con 707.225 frases de cita después de limpieza. Versionado DVC en AWS-S3.
+- **Modelos:** BERT y SciBERT con *fine-tuning*, con varios experimentos registrados en MLflow. 
+- **Solución Web Interactiva:** API FastAPI y Tablero desplegados con Docker via Railway.
 
 | Recurso | URL |
 | --- | --- |
-| Tablero | <https://cite-api-production.up.railway.app/cite/> |
-| API | <https://cite-api-production.up.railway.app/docs#> |
-| Imagen | `docker pull fredygamez/cite-api:v0.9` |
 | Código | <https://github.com/christian1521/microproyecto> |
+| Tablero | <https://cite-api-production.up.railway.app/cite/> |
+| API | <https://cite-api-production.up.railway.app/docs/> |
+| Docker | `docker pull fredygamez/cite-api:v0.9` |
 
 ### Inicio rápido
 

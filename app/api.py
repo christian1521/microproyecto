@@ -273,7 +273,7 @@ def predict(citing_sentence: str, type_model: Optional[str] = None, cited_paragr
                 )
 
     if cited_paragraphs:
-        text_reference = truncate_to_n_tokens(cited_paragraphs, 5, _tokenizer)
+        text_reference = truncate_to_n_tokens(cited_paragraphs, 2, _tokenizer)
     else:
         text_reference = None
 

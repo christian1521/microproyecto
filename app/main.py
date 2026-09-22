@@ -47,7 +47,7 @@ def index(request: Request) -> Any:
                 border-radius: 12px;
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
                 text-align: center;
-                max-width: 600px;
+                max-width: 700px;
                 width: 90%;
             }
             h1 { color: #2c3e50; margin-bottom: 5px; }

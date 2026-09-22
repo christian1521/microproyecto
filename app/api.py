@@ -265,10 +265,14 @@ def predict(citing_sentence: str, type_model: Optional[str] = None, cited_paragr
         _tokenizer = _tokenizer_bert
         _model = _model_bert
         _id2label = _id2label_bert
-    else:
+    elif type_model == "scibert":
         _tokenizer = _tokenizer_scibert
         _model = _model_scibert
         _id2label = _id2label_scibert
+    else:
+        raise ValueError(
+                    "Debe especificar el tipo de modelo a utilizar: 'scibert' o 'bert'."
+                )
 
     inputs = _tokenizer(
         text_to_classify,

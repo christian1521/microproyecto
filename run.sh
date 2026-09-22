@@ -4,4 +4,4 @@
 set -e
 
 # PORT lo inyecta Railway en tiempo de ejecucion; 8001 es el default local.
-exec uvicorn app.main:app --host 0.0.0.0 --port "${PORT:-8001}"
+exec uvicorn app.main:app --host 0.0.0.0 --port "${PORT:-8080}"

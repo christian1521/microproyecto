@@ -98,17 +98,16 @@ def index(request: Request) -> Any:
             
             <div class="buttons">
                 <a href="/docs" class="btn btn-api">
-                    <!-- Icono SVG integrado para el API -->
                     <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="16 18 22 12 16 6"></polyline>
                         <polyline points="8 6 2 12 8 18"></polyline>
                     </svg>
                     Abrir Documentación del API
                 </a>
+                
                 <a href="/cite/" class="btn btn-dash">
-                    <!-- Imagen favicon.svg para el tablero -->
-                    <img src="favicon.svg" alt="Icono Tablero" class="btn-icon">
-                    Abrir el Tablero (Aplicación)
+                    <img src="/cite/favicon.svg" alt="Icono Tablero" class="btn-icon">
+                    Abrir Tablero (Aplicación)
                 </a>
             </div>
         </div>

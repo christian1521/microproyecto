@@ -236,9 +236,9 @@ class CitationFunctionCatalog:
     def list_labels(cls) -> List[str]:
         return list(cls.CITATION_FUNCTIONS.keys())
 
-def truncate_words(text, n_words=25):
-    words = text.split()
-    return " ".join(words[:n_words])
+def truncate_to_n_tokens(text, n_tokens, tokenizer):
+    ids = tokenizer.encode(text, add_special_tokens=False)[:n_tokens]
+    return tokenizer.decode(ids)
 
 def predict(citing_sentence: str, type_model: Optional[str] = None, cited_paragraphs: Optional[str] = None) -> dict:
     """
@@ -259,16 +259,6 @@ def predict(citing_sentence: str, type_model: Optional[str] = None, cited_paragr
 
     text_to_classify = citing_sentence.replace("[CITATION]", "<citation>")
 
-    if cited_paragraphs:
-        #text_to_classify = (
-        #    f"{citing_sentence} CONTEXT: In the text, the [CITATION] tag "
-        #    f"refers to: {cited_paragraphs}"
-        #)
-        text_reference = truncate_words(cited_paragraphs, n_words=10)
-    else:
-        text_reference = None
-
-
     if type_model == "bert":
         _tokenizer = _tokenizer_bert
         _model = _model_bert
@@ -282,11 +272,15 @@ def predict(citing_sentence: str, type_model: Optional[str] = None, cited_paragr
                     "Debe especificar el tipo de modelo a utilizar: 'scibert' o 'bert'."
                 )
 
+    if cited_paragraphs:
+        text_reference = truncate_to_n_tokens(cited_paragraphs, 5, _tokenizer)
+    else:
+        text_reference = None
+
     inputs = _tokenizer(
         text_to_classify,
         text_reference,
         truncation="only_second",
-        #truncation=True,
         padding=True,
         max_length=MAX_LENGTH,
         return_tensors="pt",

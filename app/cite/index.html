@@ -55,7 +55,7 @@
             <div class="flex items-start">
                 <i class="fa-solid fa-circle-info text-blue-600 mt-1 mr-3 text-lg"></i>
                 <p class="text-slate-700 text-sm md:text-base leading-relaxed">
-                    Clasificación de la función retórica de una cita académica. Pega un contexto de cita en inglés y, opcionalmente, el párrafo del documento citado, para predecir el propósito discursivo utilizando la API de clasificación.
+                    Clasificación de la función retórica de una cita académica. Pega un contexto de cita en inglés y, opcionalmente, el párrafo del documento citado para predecir su propósito discursivo.
                 </p>
             </div>
         </div>
@@ -100,9 +100,7 @@
                     <div class="relative">
                         <select id="model-select" class="w-full md:w-1/2 p-3 bg-slate-50 border border-slate-300 rounded-lg appearance-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                             <option value="scibert-finetuning" selected>SciBERT fine-tuning</option>
-                            <option value="bert">BERT</option>
-                            <option value="qwen3-14b">Qwen3-14B</option>
-                            <option value="mistral-mini">Mistral -mini</option>
+                            <option value="bert">BERT fine-tuning</option>
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 md:right-1/2 flex items-center px-4 text-slate-700">
                             <i class="fa-solid fa-chevron-down text-sm"></i>
@@ -116,7 +114,7 @@
                     </button>
                     <div id="loading-spinner" class="ml-4 items-center text-blue-600 hidden">
                         <div class="loader mr-2"></div>
-                        <span class="text-sm font-medium">Procesando petición en la API...</span>
+                        <span class="text-sm font-medium">Procesando petición...</span>
                     </div>
                 </div>
             </form>
@@ -386,7 +384,7 @@
                     .then((data) => {
                         const info = data[functionName];
                         if (!info) {
-                            throw new Error('La respuesta de la API no contiene los datos esperados.');
+                            throw new Error('La respuesta del API no contiene los datos esperados.');
                         }
 
                         drawerDefinition.textContent = info.definition;
@@ -405,7 +403,7 @@
                     .catch((error) => {
                         drawerLoading.classList.add('hidden');
                         drawerLoading.classList.remove('flex');
-                        drawerError.textContent = "Error al conectar con la API: " + error.message;
+                        drawerError.textContent = "Error al conectar con el API: " + error.message;
                         drawerError.classList.remove('hidden');
                     });
             }

@@ -264,7 +264,7 @@ def predict(citing_sentence: str, type_model: Optional[str] = None, cited_paragr
         #    f"{citing_sentence} CONTEXT: In the text, the [CITATION] tag "
         #    f"refers to: {cited_paragraphs}"
         #)
-        text_reference = truncate_words(cited_paragraphs, n_words=25)
+        text_reference = truncate_words(cited_paragraphs, n_words=10)
     else:
         text_reference = None
 

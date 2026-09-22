@@ -11,8 +11,10 @@ from app import __version__
 
 logger = logging.getLogger("citation_api")
 
-MODEL_DIR_SCIBERT = Path(os.environ.get("MODEL_DIR", "./data/model_scibert_citing_sentences"))
-MODEL_DIR_BERT = Path(os.environ.get("MODEL_DIR", "./data/model_bert_citing_sentences"))
+BASE_DIR = Path(__file__).resolve().parent
+
+MODEL_DIR_SCIBERT = BASE_DIR / "data" / "model_scibert_citing_sentences"
+MODEL_DIR_BERT = BASE_DIR / "data" / "model_bert_citing_sentences"
 MAX_LENGTH = int(os.environ.get("MAX_LENGTH", "128"))
 
 # --------------------------------------------------------------------

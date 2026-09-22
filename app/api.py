@@ -11,7 +11,7 @@ from app import __version__
 
 logger = logging.getLogger("citation_api")
 
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 MODEL_DIR_SCIBERT = BASE_DIR / "data" / "model_scibert_citing_sentences"
 MODEL_DIR_BERT = BASE_DIR / "data" / "model_bert_citing_sentences"

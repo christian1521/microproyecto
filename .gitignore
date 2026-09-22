@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# Herramientas
+.mypy_cache/
+.pytest_cache/
+.tox/
+mlruns/
+
+# Entorno y credenciales (nunca subir llaves de AWS/DVC)
+.env
+*.env
+.aws/
+
+# Sistema / editores
+.DS_Store
+.vscode/
+.idea/

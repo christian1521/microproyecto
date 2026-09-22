@@ -257,7 +257,7 @@ def predict(citing_sentence: str, type_model: Optional[str] = None, cited_paragr
 
     import torch
 
-    text_to_classify = citing_sentence
+    text_to_classify = citing_sentence.replace("[CITATION]", "<citation>")
 
     if cited_paragraphs:
         #text_to_classify = (

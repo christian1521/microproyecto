@@ -61,7 +61,7 @@ def index(request: Request) -> Any:
                 display: flex;
                 justify-content: center;
                 gap: 20px;
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
             }
             .btn {
                 display: inline-flex;

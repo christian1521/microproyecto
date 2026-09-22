@@ -1,0 +1,6 @@
+outs:
+- md5: 9a9219e209d04e897af1a50828016aa2.dir
+  size: 438933505
+  nfiles: 10
+  hash: md5
+  path: model_bert_citing_sentences

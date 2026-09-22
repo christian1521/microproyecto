@@ -5,8 +5,13 @@
 # Datos y modelos versionados con DVC (se montan como Volume, no van en la imagen)
 .dvc
 .dvcignore
-data/
 *.dvc
+# data/
+./data/scibert_eda_cleaning_finetuning.ipynb
+./data/final_labelled_citing_sentences_all.ipynb
+./data/bert_eda_cleaning_finetuning.ipynb
+./data/model_scibert_citing_sentences.dvc
+./data/model_bert_citing_sentences.dvc
 
 # Ejemplos de referencia y experimentos (no son parte del servicio)
 example-docker-api/

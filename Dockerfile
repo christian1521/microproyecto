@@ -43,7 +43,7 @@ USER api-user
 
 # Variables de la app (Railway inyecta PORT y puede sobreescribir el resto)
 ENV PYTHONUNBUFFERED=1 \
-    MODEL_DIR=/opt/microproyecto/data/model_scibert_citing_sentences \
+    MODEL_DIR=/opt/microproyecto \
     MAX_LENGTH=128 \
     PORT=8001
 

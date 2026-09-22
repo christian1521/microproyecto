@@ -4,15 +4,16 @@ import pandas as pd
 import pytest
  
 from app.api import predict, MODEL_DIR
- 
-_MODEL_AVAILABLE = (Path(MODEL_DIR) / "config.json").exists()
- 
- 
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+MODEL_DIR_SCIBERT_AVAILABLE = BASE_DIR / "data" / "model_scibert_citing_sentences"
+MODEL_DIR_BERT_AVAILABLE = BASE_DIR / "data" / "model_bert_citing_sentences"
+
 @pytest.mark.skipif(
-    not _MODEL_AVAILABLE,
+    not MODEL_DIR_SCIBERT_AVAILABLE.exists() and not MODEL_DIR_BERT_AVAILABLE.exists(),
     reason=(
-        f"No se encontró el modelo en '{MODEL_DIR}'. "
-        f"Define MODEL_DIR o coloca el modelo ahí para correr esta prueba."
+        f"No se encontró el directorio de los moelos BERT o SCIBERT."
     ),
 )
 def test_make_prediction(test_data: pd.DataFrame) -> None:
@@ -20,7 +21,7 @@ def test_make_prediction(test_data: pd.DataFrame) -> None:
     sample = test_data.iloc[0]
  
     # When
-    prediction_data = predict(citing_sentence=sample["citing_sentence"])
+    prediction_data = predict(citing_sentence=sample["citing_sentence"], type_model="scibert")
  
     # Then
     assert prediction_data["predicted_label"]

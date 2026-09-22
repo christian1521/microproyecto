@@ -236,6 +236,9 @@ class CitationFunctionCatalog:
     def list_labels(cls) -> List[str]:
         return list(cls.CITATION_FUNCTIONS.keys())
 
+def truncate_words(text, n_words=25):
+    words = text.split()
+    return " ".join(words[:n_words])
 
 def predict(citing_sentence: str, type_model: Optional[str] = None, cited_paragraphs: Optional[str] = None) -> dict:
     """
@@ -254,13 +257,16 @@ def predict(citing_sentence: str, type_model: Optional[str] = None, cited_paragr
 
     import torch
 
+    text_to_classify = citing_sentence
+
     if cited_paragraphs:
-        text_to_classify = (
-            f"{citing_sentence} CONTEXT: In the text, the [CITATION] tag "
-            f"refers to: {cited_paragraphs}"
-        )
+        #text_to_classify = (
+        #    f"{citing_sentence} CONTEXT: In the text, the [CITATION] tag "
+        #    f"refers to: {cited_paragraphs}"
+        #)
+        text_reference = cited_paragraphs
     else:
-        text_to_classify = citing_sentence
+        text_reference = None
 
 
     if type_model == "bert":
@@ -278,7 +284,9 @@ def predict(citing_sentence: str, type_model: Optional[str] = None, cited_paragr
 
     inputs = _tokenizer(
         text_to_classify,
-        truncation=True,
+        text_reference,
+        truncation="only_second",
+        #truncation=True,
         padding=True,
         max_length=MAX_LENGTH,
         return_tensors="pt",

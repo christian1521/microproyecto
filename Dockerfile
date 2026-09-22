@@ -5,8 +5,6 @@
 #   - Tablero (app/cite/)   -> /cite/        (montado por app/main.py)
 #
 # Ambos viven en la carpeta app/ y los expone el mismo proceso uvicorn
-# (app.main:app), por lo que no hacen falta dos imagenes ni dos servicios.
-# Basado en example-docker-api/Dockerfile y example-docker-dash/Dockerfile.
 # ---------------------------------------------------------------------------
 FROM python:3.12-slim
 
@@ -31,13 +29,10 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu \
     -r /opt/microproyecto/requirements.txt
 
-# Copiar el codigo de los dos servicios (API + tablero estatico) y el arranque
+# Copiar el codigo de los servicios (data+API + tablero estatico) y el arranque
 COPY ./app /opt/microproyecto/app
 COPY ./run.sh /opt/microproyecto/run.sh
-
-# El modelo NO se hornea en la imagen: pesa ~440 MB y esta versionado con DVC.
-# En Railway se monta aqui un Volume; en local se monta con -v (ver README).
-RUN mkdir -p /opt/microproyecto/data
+COPY ./data /opt/microproyecto/data
 
 # Hacer el script de arranque ejecutable
 RUN chmod +x /opt/microproyecto/run.sh

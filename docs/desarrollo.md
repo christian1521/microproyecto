@@ -14,12 +14,13 @@ https://github.com/christian1521/microproyecto
 ├── app/                           # API + tablero (un solo servicio)
 │   ├── main.py                    # FastAPI: página de inicio, router /api/v1, monta /cite
 │   ├── api.py                     # Endpoints, catálogo de funciones, carga e inferencia de modelos
-│   ├── config.py                  # Settings (prefijo /api/v1, CORS, logging)
-│   ├── cite/                      # Tablero web estático
+│   ├── config.py                  # Settings (/api/v1, CORS, logging)
+│   ├── cite/                      # Tablero web
 │   │   ├── index.html
 │   │   └── favicon.svg
 │   └── tests/                     # Pruebas pytest (conftest.py, test_api.py)
 ├── data/
+│   ├── final_labelled_citing_sentences_all.csv.dvc # DVC dataset entrenamiento SCDF
 │   ├── model_scibert_citing_sentences.dvc          # DVC del modelo SciBERT (~440 MB)
 │   └── model_bert_citing_sentences.dvc             # DVC del modelo BERT (~439 MB)
 ├── experimentos-mlflow/           # Scripts de experimentos registrados en MLflow
@@ -30,7 +31,7 @@ https://github.com/christian1521/microproyecto
 ├── dist/                          # Paquete distribuible (.whl, .tar.gz)
 ├── Dockerfile                     # Imagen única API + tablero (python:3.12)
 ├── .dockerignore
-├── run.sh                         # Arranque: uvicorn app.main:app --port ${PORT}
+├── run.sh                         # Arranque Docker con uvicorn app.main:app ${PORT}
 ├── railway.json                   # Build/deploy en Railway (healthcheck, reintentos)
 ├── Procfile                       # Arranque estilo PaaS
 ├── pyproject.toml                 # Paquete citing-sentences-api
@@ -41,9 +42,11 @@ https://github.com/christian1521/microproyecto
 
 ## Diagrama de componentes
 
+![diagramacomponentes](./images/diagramacomponentes.png)
+
 ```mermaid
 flowchart TD
-    U([Usuario]) -->|HTTPS| R
+    U((Usuario)) -->|HTTPS| R
 
     subgraph R[Railway - servicio cite-api]
         subgraph C[Contenedor fredygamez/cite-api:v0.9]
@@ -51,7 +54,7 @@ flowchart TD
             T[Tablero /cite/]
             A[API /api/v1]
             M1[(Modelo SciBERT <br>fine-tuned)]
-            M2[(Modelo BERT)]
+            M2[(Modelo BERT <br>fine-tuned)]
             UV --> T
             UV --> A
             A --> M1
@@ -60,13 +63,15 @@ flowchart TD
         end
     end
 
-    DH[(DockerHub<br/>fredygamez/cite-api)] -->|pull imagen| R
-    GH[(Repositorio GitHub<br/>christian1521/microproyecto)] -->|docker build + push| DH
-    S3[(S3 + DVC<br/>christian1521-dvcstore)] -->|dvc pull modelos| GH
-    ML[(MLflow en AWS EC2)] -.registro de experimentos.- GH
+    DH[DockerHub<br/>fredygamez/cite-api] -->|pull imagen| R
+    GH[Repositorio GitHub<br/>christian1521/microproyecto] -->|docker build + push| DH
+    S3[(Dataset + DVC<br/>AWS-S3<br/>christian1521-dvcstore)] -->|dvc pull modelos| GH
+    ML[MLOps con MLFlow <br> AWS EC2] -.registro de experimentos.- GH
 ```
 
 ## Diagrama de secuencia del uso
+
+![](./images/diagramasecuencia.png)
 
 ```mermaid
 %%{init: {'theme': 'neutral'}}%%

@@ -14,7 +14,7 @@ CiteAnalyzer clasifica automáticamente el propósito discursivo de una cita aca
 | --- | --- |
 | Página de inicio | <https://cite-api-production.up.railway.app/> |
 | Tablero (aplicación) | <https://cite-api-production.up.railway.app/cite/> |
-| API (OpenAPI) | <https://cite-api-production.up.railway.app/docs/> |
+| API | <https://cite-api-production.up.railway.app/docs/> |
 | Imagen Docker | <https://hub.docker.com/repository/docker/fredygamez/cite-api/tags> (`fredygamez/cite-api:v0.9`) |
 | Repositorio código en Github | <https://github.com/christian1521/microproyecto> |
 

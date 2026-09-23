@@ -42,8 +42,7 @@ Accesos locales:
 
 ## Opción B - Instalar desde el código fuente
 
-La versión estable del código es el release [**v0.2**](https://github.com/christian1521/microproyecto/releases/tag/v0.2). En su sección *Assets* se puede descargar el **Source code** (zip o tar.gz). El código incluye el `Dockerfile`, el
-`.dockerignore` y el `run.sh`, así que hay dos formas de ejecutarlo:
+La versión estable del código es el release [**v0.2**](https://github.com/christian1521/microproyecto/releases/tag/v0.2). En su sección *Assets* se puede descargar el **Source code** (zip o tar.gz). El código incluye el `Dockerfile`, el `.dockerignore` y el `run.sh`, así que hay dos formas de ejecutarlo:
 
 - **B.1 - Entorno virtual de Python:** Uvicorn se ejecuta directamente en la máquina.
 - **B.2 - Contenedor Docker:** se construye una imagen propia con el `Dockerfile` del repositorio.

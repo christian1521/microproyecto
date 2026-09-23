@@ -25,8 +25,8 @@ Fredy Alexander Gamez Rodriguez
 
 ## Manuales
 
+- [Manual de instalación](manual-instalacion.md): instalación con Docker, desde código fuente y despliegue en Railway.
 - [Manual de usuario del tablero](manual-usuario.md): cómo analizar una cita e interpretar el resultado.
-- [Manual de instalación](manual-instalacion.md): instalación con Docker (DockerHub), desde el código fuente y despliegue en Railway.
 
 ## Documentación complementaria
 

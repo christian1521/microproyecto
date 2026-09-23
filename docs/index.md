@@ -17,16 +17,16 @@ Fredy Alexander Gamez Rodriguez
 
 | Recurso | URL |
 | --- | --- |
-| Página de inicio | <https://cite-api-production.up.railway.app/> |
-| Tablero (aplicación) | <https://cite-api-production.up.railway.app/cite/> |
-| API | <https://cite-api-production.up.railway.app/docs/> |
-| Imagen Docker | <https://hub.docker.com/repository/docker/fredygamez/cite-api/tags> (`fredygamez/cite-api:v0.9`) |
 | Repositorio código en Github | <https://github.com/christian1521/microproyecto> <br>[Ver detalles](desarrollo.md) |
+| Imagen Docker | <https://hub.docker.com/repository/docker/fredygamez/cite-api/tags> (`fredygamez/cite-api:v0.9`) |
+| Página de inicio | <https://cite-api-production.up.railway.app/> |
+| API | <https://cite-api-production.up.railway.app/docs/> |
+| Tablero (aplicación) | <https://cite-api-production.up.railway.app/cite/> |
 
 ## Manuales
 
 - [Manual de instalación](manual-instalacion.md): instalación con Docker, desde código fuente y despliegue en Railway.
-- [Manual de usuario del tablero](manual-usuario.md): cómo analizar una cita e interpretar el resultado.
+- [Manual de usuario](manual-usuario.md): cómo analizar una cita e interpretar el resultado.
 
 ## Documentación complementaria
 

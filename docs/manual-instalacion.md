@@ -8,37 +8,58 @@ más sencilla y la que se recomienda.
 
 | **OPCIONES** | **Docker ≥ 24** | **Python ≥ 3.9** | **Git** | **DVC con S3 y credenciales AWS** | **Cuenta  Railway** | **RAM disponible** |
 | --- | --- | --- | --- | --- | --- | --- |
-| **Opción A (DockerHub, localhost)** | ✅️ | - | - | - | - | ~3 GB (dos modelos de ~440 MB) |
+| **Opción A (Railway)** | - | - | - | - | ✅️ | plan con ≥ 3 GB |
 | **Opción B1 (código fuente, venv)** | - | ✅️ | opcional | ✅️ | - | ~3 GB |
 | **Opción B2 (código fuente, Dockerfile)** | ✅️ | ✅️ ** | opcional | ✅️ | - | ~3 GB |
-| **Opción C (Railway)** | - | - | - | - | ✅️ | plan con ≥ 3 GB |
+| **Opción C (DockerHub, localhost)** | ✅️ | - | - | - | - | ~3 GB (dos modelos de ~440 MB) |
 
 `**`  Python solo se usa para instalar DVC (`pip install "dvc[s3]"`) y bajar los modelos. El modelo corre dentro del contenedor.
 
+## Opción A - Desplegar en Railway (PaaS)
 
+1. En Railway, crear un proyecto y agregar un servicio con **Deploy → Docker Image**.
+2. Escribir la imagende DockerHub `fredygamez/cite-api:v0.9`.
+3. En **Variables**, definir `PORT=8080`. Opcionalmente, definir `MAX_LENGTH=128`.
+4. En **Settings → Networking**, generar un dominio público apuntando al puerto `8080`.
+5. Para actualizar, cambiar el *tag* de la imagen y volver a desplegar. Railway conserva el historial
+   de despliegues.
 
+El repositorio incluye además `railway.json`, que sirve para construir desde el `Dockerfile`, con *healthcheck* en `/` y reintentos automáticos en caso de falla.
 
-## Opción A - Ejecutar la imagen publicada en DockerHub
+Despliegue actual: <https://cite-api-production.up.railway.app/>
 
-La imagen ya trae el código, las dependencias (PyTorch CPU) y los dos modelos con *fine-tuning*.
-Las versiones publicadas se pueden ver en <https://hub.docker.com/repository/docker/fredygamez/cite-api/tags>. La más reciente es `v0.9`.
+## Verificar la instalación
 
 ```bash
-# 1. Descargar la imagen
-docker pull fredygamez/cite-api:v0.9
+curl http://localhost:8001/api/v1/health
+# {"status":"ok","device":"cpu","model_version":"..."}
 
-# 2. Ejecutar el contenedor (el servicio escucha en la variable PORT)
-docker run -d --name cite-api -p 8001:8001 -e PORT=8001 fredygamez/cite-api:v0.9
-
-# 3. Revisar los logs hasta que aparezca "Uvicorn running on http://0.0.0.0:8001"
-docker logs -f cite-api
+curl -X POST http://localhost:8001/api/v1/classify-citation \
+  -H "Content-Type: application/json" \
+  -d '{"citing_sentence":"Similar to the method proposed in [CITATION], we adopt a transformer-based architecture.","type_model":"scibert"}'
 ```
 
-Accesos locales:
+Si `health` devuelve `"status":"degraded"`, el servicio no encontró los modelos. Revise que
+`data/model_scibert_citing_sentences/` y `data/model_bert_citing_sentences/` contengan `config.json`.
 
-- Inicio: <http://localhost:8001/>
-- Tablero: <http://localhost:8001/cite/>
-- API: <http://localhost:8001/docs>
+## Variables de entorno
+
+| Variable | Propósito | Valor por defecto |
+| --- | --- | --- |
+| `PORT` | Puerto de Uvicorn (Railway lo inyecta) | `8001` en la imagen, `8080` en `run.sh` |
+| `MAX_LENGTH` | Longitud máxima de tokens de la entrada | `128` |
+
+## Pruebas automatizadas
+
+```bash
+pip install tox
+tox -e test_app        # pytest sobre app/tests/
+```
+
+> [!CAUTION]
+> Verificar que las credenciales de AWS y las llaves `.pem` **nunca** se encuentren en repositorio Git.
+
+
 
 ## Opción B - Instalar desde el código fuente
 
@@ -176,50 +197,31 @@ Con cualquiera de las dos formas:
 Si en B.1 usó `run.sh` sin definir `PORT`, cambie `8001` por `8080`.
 
 
-## Opción C - Desplegar en Railway (PaaS)
 
-1. En Railway, crear un proyecto y agregar un servicio con **Deploy → Docker Image**.
-2. Escribir la imagen `fredygamez/cite-api:v0.9`.
-3. En **Variables**, definir `PORT=8080`. Opcionalmente, definir `MAX_LENGTH=128`.
-4. En **Settings → Networking**, generar un dominio público apuntando al puerto `8080`.
-5. Para actualizar, cambiar el *tag* de la imagen y volver a desplegar. Railway conserva el historial
-   de despliegues.
 
-El repositorio incluye además `railway.json`, que sirve para construir desde el `Dockerfile`, con
-*healthcheck* en `/` y reintentos automáticos en caso de falla.
+## Opción C - Ejecutar la imagen publicada en DockerHub
 
-Despliegue actual: <https://cite-api-production.up.railway.app/>
-
-## Verificar la instalación
+La imagen ya trae el código, las dependencias (PyTorch CPU) y los dos modelos con *fine-tuning*.
+Las versiones publicadas se pueden ver en <https://hub.docker.com/repository/docker/fredygamez/cite-api/tags>. La más reciente es `v0.9`.
 
 ```bash
-curl http://localhost:8001/api/v1/health
-# {"status":"ok","device":"cpu","model_version":"..."}
+# 1. Descargar la imagen
+docker pull fredygamez/cite-api:v0.9
 
-curl -X POST http://localhost:8001/api/v1/classify-citation \
-  -H "Content-Type: application/json" \
-  -d '{"citing_sentence":"Similar to the method proposed in [CITATION], we adopt a transformer-based architecture.","type_model":"scibert"}'
+# 2. Ejecutar el contenedor (el servicio escucha en la variable PORT)
+docker run -d --name cite-api -p 8001:8001 -e PORT=8001 fredygamez/cite-api:v0.9
+
+# 3. Revisar los logs hasta que aparezca "Uvicorn running on http://0.0.0.0:8001"
+docker logs -f cite-api
 ```
 
-Si `health` devuelve `"status":"degraded"`, el servicio no encontró los modelos. Revise que
-`data/model_scibert_citing_sentences/` y `data/model_bert_citing_sentences/` contengan `config.json`.
+Accesos locales:
 
-## Variables de entorno
+- Inicio: <http://localhost:8001/>
+- Tablero: <http://localhost:8001/cite/>
+- API: <http://localhost:8001/docs>
 
-| Variable | Propósito | Valor por defecto |
-| --- | --- | --- |
-| `PORT` | Puerto de Uvicorn (Railway lo inyecta) | `8001` en la imagen, `8080` en `run.sh` |
-| `MAX_LENGTH` | Longitud máxima de tokens de la entrada | `128` |
 
-## Pruebas automatizadas
-
-```bash
-pip install tox
-tox -e test_app        # pytest sobre app/tests/
-```
-
-> [!CAUTION]
-> Verificar que las credenciales de AWS y las llaves `.pem` **nunca** se encuentren en repositorio Git.
 
 [Volver al inicio](index.md)
 

@@ -82,12 +82,12 @@ https://github.com/christian1521/microproyecto
 | Despliegue | Railway (PaaS) |
 | Pruebas | pytest vía tox |
 
-## Modelos servidos
+## Modelos implementados
 
-| Modelo | Run en MLflow | F1 macro | Exactitud |
-| --- | --- | --- | --- |
-| SciBERT (`allenai/scibert_scivocab_uncased`) fine-tuned | `scibert-citfunc-seed42` | 0,883 | 0,907 |
-| BERT fine-tuned | `bert-citfunc-seed42` | 0,828 | 0,862 |
+| Modelo | Identificador para MLflow |
+| --- | --- |
+| SciBERT (`allenai/scibert_scivocab_uncased`) fine-tuned | `scibert-citfunc-seed42` |
+| BERT fine-tuned | `bert-citfunc-seed42` |
 
 Los modelos se cargan de forma diferida en la primera petición. La entrada se trunca a `MAX_LENGTH=128`
 tokens. Si llega `cited_paragraphs`, el texto de entrada se arma así:

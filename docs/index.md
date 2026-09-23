@@ -1,10 +1,15 @@
 # CiteAnalyzer: clasificación de la función de cita
 
-**Proyecto Desarrollo de Soluciones - MAIA Uniandes - Grupo 24 - Entrega final**
+**Proyecto Desarrollo de Soluciones - MAIA Uniandes **
 
-Christian Alberto Torres Manigua · Fredy Alexander Gamez Rodriguez
+## Grupo 24 - Entrega 3 
 
-CiteAnalyzer clasifica automáticamente el propósito discursivo de una cita académica en una de 
+```
+Christian Alberto Torres Manigua 
+Fredy Alexander Gamez Rodriguez
+```
+
+**CiteAnalyzer** clasifica automáticamente el propósito discursivo de una cita académica en una de 
 **9 categorías**: `Background`, `Gap`, `Basis`, `Comparison`, `Application`, `Improvement/Modification`,
 `Evidence`, `Identification of the Originator` y `Further Reading`. Uso de modelos *encoder* (BERT y SciBERT) con *fine-tuning*. Se despliega con un API FastAPI y un tablero web, en un mismo contenedor Docker desplegado via Railway.
 
@@ -16,7 +21,7 @@ CiteAnalyzer clasifica automáticamente el propósito discursivo de una cita aca
 | Tablero (aplicación) | <https://cite-api-production.up.railway.app/cite/> |
 | API | <https://cite-api-production.up.railway.app/docs/> |
 | Imagen Docker | <https://hub.docker.com/repository/docker/fredygamez/cite-api/tags> (`fredygamez/cite-api:v0.9`) |
-| Repositorio código en Github | <https://github.com/christian1521/microproyecto> |
+| Repositorio código en Github | <https://github.com/christian1521/microproyecto> <br>[Ver detalles](desarrollo.md) |
 
 ## Manuales
 
@@ -36,10 +41,10 @@ CiteAnalyzer clasifica automáticamente el propósito discursivo de una cita aca
 | --- | --- |
 | Modelos | BERT y SciBERT con *fine-tuning* |
 | Experimentos | MLflow en AWS EC2 |
-| Datos y modelos versionados | DVC con remoto S3 (`s3://christian1521-dvcstore`) |
+| Datos y modelos versionados | DVC con remoto AWS-S3 (`s3://christian1521-dvcstore`) |
 | API | FastAPI + Uvicorn (`/api/v1`) |
 | Tablero | HTML/JS por FastAPI (`/cite/`) |
 | Contenedor | Docker (`python:3.12-slim`), una imagen para API y Tablero |
 | Registro de imágenes | DockerHub (`fredygamez/cite-api`) |
 | Despliegue (PaaS) | Railway |
-| Código | GitHub |
+| Código fuente | Repositorio GitHub |

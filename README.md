@@ -38,15 +38,15 @@ docker run -d -p 8001:8001 -e PORT=8001 fredygamez/cite-api:v0.9
 
 ### Documentación y manuales
 
-1. [Indice](index.md)  
-2. [Manual de usuario](manual-usuario.md) 
-3. [Manual de instalación](manual-instalacion.md) 
-4. [Vista de desarrollo](desarrollo.md) 
-5. [Retos](retos.md)
+1. [Indice](./docs/index.md)  
+2. [Manual de usuario](./docs/manual-usuario.md) 
+3. [Manual de instalación](./docs/manual-instalacion.md) 
+4. [Vista de desarrollo](./docs/desarrollo.md) 
+5. [Retos](./docs/retos.md)
 
 
 
 ---
 
-Enlaces: [Indice](index.md) · [Manual de usuario](manual-usuario.md) · [Manual de instalación](manual-instalacion.md) · [Vista de desarrollo](desarrollo.md) · [Retos](retos.md)
+Enlaces: [Indice](./docs/index.md) · [Manual de usuario](./docs/manual-usuario.md) · [Manual de instalación](./docs/manual-instalacion.md) · [Vista de desarrollo](./docs/desarrollo.md) · [Retos](./docs/retos.md)
 

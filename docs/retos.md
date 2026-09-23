@@ -22,7 +22,7 @@
 Se entrenaron de nuevo los dos *encoders* que usa el tablero con la misma semilla (`seed42`), y ambos quedaron registrados en el servidor MLflow de AWS EC2. SciBERT (`scibert-citfunc-seed42`) llegó a **0,883 de F1 macro** y **0,907 de exactitud**. BERT (`bert-citfunc-seed42`) llegó a **0,828** y **0,862**. Con esto se confirma lo que se vio en la Entrega 2: un *encoder* especializado en
 literatura científica rinde más.
 
-#### Justificación de resultados de metricas
+#### Justificación de resultados de métricas
 
 Debido a que el dataset proviene de un proceso de etiquetado automatizado, este tiende a producir fronteras de decisión más regulares y aprendibles, precisamente porque el propio proceso que generó las etiquetas probablemente se apoyó en las mismas señales superficiales (léxicas, sintácticas o de patrones de frase) que un modelo de lenguaje preentrenado como BERT o SciBERT también es capaz de capturar con alta fidelidad. Esto no invalida el resultado, pero sí exige matizarlo: el valor de F1-macro refleja qué tan bien el modelo aproxima el criterio automatizado de etiquetado, no necesariamente qué tan bien reproduciría el juicio de un experto humano sobre la función retórica real de la cita.
 

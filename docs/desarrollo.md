@@ -40,59 +40,33 @@ https://github.com/christian1521/microproyecto
 └── README.md
 ```
 
+
+
+
+
 ## Diagrama de componentes
 
 ![diagramacomponentes](./images/diagramacomponentes.png)
 
-```mermaid
-flowchart TD
-    U((Usuario)) -->|HTTPS| R
 
-    subgraph R[Railway - servicio cite-api]
-        subgraph C[Contenedor fredygamez/cite-api:v0.9]
-            UV[Uvicorn <br> FastAPI app.main]
-            T[Tablero /cite/]
-            A[API /api/v1]
-            M1[(Modelo SciBERT <br>fine-tuned)]
-            M2[(Modelo BERT <br>fine-tuned)]
-            UV --> T
-            UV --> A
-            A --> M1
-            A --> M2
-            T -. fetch JSON .-> A
-        end
-    end
 
-    DH[DockerHub<br/>fredygamez/cite-api] -->|pull imagen| R
-    GH[Repositorio GitHub<br/>christian1521/microproyecto] -->|docker build + push| DH
-    S3[(Dataset + DVC<br/>AWS-S3<br/>christian1521-dvcstore)] -->|dvc pull modelos| GH
-    ML[MLOps con MLFlow <br> AWS EC2] -.registro de experimentos.- GH
-```
+> **Esquema de desarrollo y despliegue del servicio `\cite-api\`:**
+>
+> El diagrama ilustra el flujo de desarrollo, despliegue y operación del servicio *cite-api*, alojado en **Railway**. El usuario interactúa vía **HTTPS** con un contenedor Docker (`fredygamez/cite-api:v0.9`), que ejecuta una aplicación **FastAPI** con **Uvicorn**. Esta expone un *tablero* (`/cite/`) y una **API REST** (`/api/v1`), que consume dos modelos de lenguaje *fine-tuned*: **SciBERT** y **BERT**. El tablero recupera datos en formato JSON desde la API.
+>
+> El código fuente y la configuración residen en un repositorio **GitHub** (`christian1521/microproyecto`), donde se construye la imagen Docker y se sube a **DockerHub**. Los modelos y datasets se gestionan con **DVC** en un bucket de **AWS S3** (`christian1521-dvcstore`), mientras que el registro de experimentos de *MLOps* se realiza con **MLFlow** en una instancia **AWS EC2**. Este esquema garantiza un despliegue escalable y un desarrollo colaborativo.
+
+
 
 ## Diagrama de secuencia del uso
 
 ![](./images/diagramasecuencia.png)
 
-```mermaid
-%%{init: {'theme': 'neutral'}}%%
-sequenceDiagram
-    autonumber
-    actor Usuario
-    participant Web
-    participant API
-    participant Modelo
-
-    Usuario->>Web: Ingresa texto
-        Usuario->>Web: (Opcional) Ingresa párrafo citado
-    Usuario->>Web: Selecciona modelo de clasificación
-    Usuario->>Web: Botón "Analizar Cita"
-    Web->>API: Consulta API con modelo seleccionado
-    API->>Modelo: Procesa solicitud
-    Modelo-->>API: Retorna respuesta con porcentaje de clasificación
-    API-->>Web: Retorna descripción de categoría
-    Web-->>Usuario: Muestra resultados 
-
-```
+> **Esquema de uso de la aplicación para usuarios finales:**
+>
+> Este diagrama de secuencias describe el flujo de interacción del usuario con la aplicación *cite-api*. El proceso inicia cuando el **usuario** ingresa un texto (y opcionalmente un párrafo citado) en la interfaz **Web**. Luego, selecciona un modelo de clasificación y hace clic en el botón **"Analizar Cita"**.
+>
+> La aplicación **Web** envía una consulta a la **API**, especificando el modelo seleccionado. La **API** procesa la solicitud y la reenvía al **Modelo** correspondiente, que analiza el texto y devuelve un **porcentaje de clasificación**. La **API** traduce este resultado en una **descripción de categoría** y lo envía de vuelta a la interfaz **Web**, que finalmente muestra los resultados al usuario. Este flujo garantiza una experiencia intuitiva y eficiente para el análisis de citas.
 
 ## Stack tecnológico
 

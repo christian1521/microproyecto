@@ -1,0 +1,1492 @@
+[
+ {
+  "data": {
+   "id": "2302.00109_66_0_f1a5b175",
+   "section": "Experiment Details in Section [REF]",
+   "left_context": "",
+   "citing_sentence": "We then introduce the covered GR-MLP models, including Lap-Reg #OTHER_CITATION, #CITATION_TAG, P-Reg #OTHER_CITATION and GraphMLP #OTHER_CITATION detailedly.",
+   "right_context": "Besides the basic supervised cross-entropy loss, GR-MLPs employ a variety of regularization losses to inject the graph structure knowledge into the learning of MLPs implicitly.",
+   "citing_paper": "2302.00109",
+   "cited_ref_id": "f1a5b17505666f965759d63e9b5132ad",
+   "n_citations_in_sentence": 4,
+   "llm_agreement": false,
+   "abs_url": "https://arxiv.org/abs/2302.00109",
+   "pdf_url": "https://arxiv.org/pdf/2302.00109",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2302.00109\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2302.00109\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 0.5,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Comparison"
+       ]
+      }
+     },
+     {
+      "from_name": "secondary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2308.16898_108_0_1e6253f0",
+   "section": "Related work",
+   "left_context": "",
+   "citing_sentence": "Extensive research has delved into gradient descent's implicit bias in separable classification tasks, often using logistic or exponentially-tailed losses for margin maximization #OTHER_CITATION, #CITATION_TAG, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION.",
+   "right_context": "The findings have also been extended to non-separable data using gradient-based techniques #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION.",
+   "citing_paper": "2308.16898",
+   "cited_ref_id": "1e6253f0f0c2c0a3db27bf33daaaf7e5",
+   "n_citations_in_sentence": 7,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2308.16898",
+   "pdf_url": "https://arxiv.org/pdf/2308.16898",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2308.16898\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2308.16898\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     },
+     {
+      "from_name": "flags",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Needs wider context"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2501.00298_126_0_3d79f989",
+   "section": "Nonconformity functions",
+   "left_context": "",
+   "citing_sentence": "currently supports four nonconformity functions that are shown to be useful in prior work #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION, #CITATION_TAG.",
+   "right_context": "The nonconformity measures are used to evaluate the credibility and confidence of underlying model predictions, as discussed in Sec. 5.1 of the submitted paper.",
+   "citing_paper": "2501.00298",
+   "cited_ref_id": "3d79f989a12ba4a274c1fd8bd30ba3b3",
+   "n_citations_in_sentence": 8,
+   "llm_agreement": false,
+   "abs_url": "https://arxiv.org/abs/2501.00298",
+   "pdf_url": "https://arxiv.org/pdf/2501.00298",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2501.00298\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2501.00298\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 0.5,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     },
+     {
+      "from_name": "secondary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Gap"
+       ]
+      }
+     },
+     {
+      "from_name": "flags",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Needs wider context"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2404.08221_20_0_3d9e5cb3",
+   "section": "Detecting and Evaluating Violations",
+   "left_context": "",
+   "citing_sentence": "To fulfill the need for a broad metric for evaluating copyright risk, Zhou et al. introduce CopyScope, a framework for quantifying infringement at the model level by using Fréchet Inception Distance (FID) to capture image similarity in the way that most closely mirrors human perception #CITATION_TAG.",
+   "right_context": "Using an ensemble based approach of trying different combinations of model sub-components, Zhou et al. use FID-Shapley values to calculate how much each component contributes to the final image's likeness to the training data, identifying which models are most likely to cause infringement issues and should be identified as targets for extra attention.",
+   "citing_paper": "2404.08221",
+   "cited_ref_id": "3d9e5cb31bcd32235b84505713c90846",
+   "n_citations_in_sentence": 1,
+   "llm_agreement": false,
+   "abs_url": "https://arxiv.org/abs/2404.08221",
+   "pdf_url": "https://arxiv.org/pdf/2404.08221",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2404.08221\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2404.08221\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 0.5,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Basis"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2508.00205_7_0_ee97cfda",
+   "section": "Related Work",
+   "left_context": "",
+   "citing_sentence": "Automatic personality recognition: Audio-visual automatic personality recognition methods, encompassing both apparent personality recognition #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION and real personality recognition #CITATION_TAG, #OTHER_CITATION, have been widely developed based on the pipeline which directly extracts expressive behavioural features from human face #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION, body #OTHER_CITATION, #OTHER_CITATION, speech #OTHER_CITATION, #OTHER_CITATION or their combinations #CITATION_TAG, #OTHER_CITATION, #OTHER_CITATION.",
+   "right_context": "A typical example is the CR-Net #OTHER_CITATION which leverages a ResNet-34 #OTHER_CITATION to directly extract personality features from human visual, audio and text behaviours.",
+   "citing_paper": "2508.00205",
+   "cited_ref_id": "ee97cfda95b93031fc4f03c6acf7ccb9",
+   "n_citations_in_sentence": 15,
+   "llm_agreement": false,
+   "abs_url": "https://arxiv.org/abs/2508.00205",
+   "pdf_url": "https://arxiv.org/pdf/2508.00205",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2508.00205\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2508.00205\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 0.5,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     },
+     {
+      "from_name": "secondary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Comparison"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2502.00136_134_2_15d2c093",
+   "section": "The formula:a2daed9ee8c4e49ad0b30e09f98edccc Thesis: LLMs as the Unconscious Substrate for Intelligence",
+   "left_context": "LLMs form the substrate of unconscious inference, while higher-order reasoning emerges from structured components layered above them.",
+   "citing_sentence": "Intelligence is not innate to LLMs alone but constructed through integration with memory, grounding, and verifiable reasoning systems #OTHER_CITATION, #OTHER_CITATION, #CITATION_TAG.",
+   "right_context": "",
+   "citing_paper": "2502.00136",
+   "cited_ref_id": "15d2c0934cd1e08988d8089c5b0914c5",
+   "n_citations_in_sentence": 3,
+   "llm_agreement": false,
+   "abs_url": "https://arxiv.org/abs/2502.00136",
+   "pdf_url": "https://arxiv.org/pdf/2502.00136",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2502.00136\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2502.00136\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 0.5,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Gap"
+       ]
+      }
+     },
+     {
+      "from_name": "secondary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2404.00785_21_2_fc56f48e",
+   "section": "Materials and Methods",
+   "left_context": "The execution of spiral convolution operations involves two steps: initially, mesh vertices along the trajectory within a fixed distance are concatenated, a process known as neighborhood aggregation.",
+   "citing_sentence": "Following this, the concatenated vertices undergo processing through a multilayer perceptron (MLP) with weight sharing #CITATION_TAG.",
+   "right_context": "The decoder module performs a reverse transformation compared to the encoder using the latent space [MATH].",
+   "citing_paper": "2404.00785",
+   "cited_ref_id": "fc56f48e31817ca8d4704bc357386db0",
+   "n_citations_in_sentence": 1,
+   "llm_agreement": false,
+   "abs_url": "https://arxiv.org/abs/2404.00785",
+   "pdf_url": "https://arxiv.org/pdf/2404.00785",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2404.00785\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2404.00785\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 0.5,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2306.00241_1_1_f5be066e",
+   "section": "Introduction",
+   "left_context": "One of remaining challenges of GAN inversion is the trade-off between reconstruction quality and perceptual quality of the edited images.",
+   "citing_sentence": "Popular latent spaces such as [MATH] #OTHER_CITATION, [MATH] #OTHER_CITATION, and [MATH] #CITATION_TAG improve reconstruction quality, yet the low-quality edited image is unavoidable.",
+   "right_context": "Recent attempts ( , SAM #OTHER_CITATION, PTI #OTHER_CITATION, and [MATH] #OTHER_CITATION) aim to maintain the perceptual quality during semantic editing.",
+   "citing_paper": "2306.00241",
+   "cited_ref_id": "f5be066ebe06d1d2c5a189030a4115b0",
+   "n_citations_in_sentence": 3,
+   "llm_agreement": false,
+   "abs_url": "https://arxiv.org/abs/2306.00241",
+   "pdf_url": "https://arxiv.org/pdf/2306.00241",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2306.00241\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2306.00241\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 0.5,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Gap"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2404.00785_5_1_4f0d7fd4",
+   "section": "Introduction",
+   "left_context": "We employ Mesh VAE to obtain interpretable latent dimensions and generate valid shapes similar to the training dataset.",
+   "citing_sentence": "We use a modified contrastive loss #CITATION_TAG as a latent space disentanglement strategy to isolate two data generative factors: age and disease (MS).",
+   "right_context": "Age is represented by continuous values, while disease is labeled by discrete values.",
+   "citing_paper": "2404.00785",
+   "cited_ref_id": "4f0d7fd443ef49851c2d366673385f92",
+   "n_citations_in_sentence": 1,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2404.00785",
+   "pdf_url": "https://arxiv.org/pdf/2404.00785",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2404.00785\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2404.00785\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 0.5,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Improvement / Modification"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2306.00245_48_1_20d0ef6d",
+   "section": "Related Work",
+   "left_context": "Automating web-based tasks using large language models (LLMs) has also been broadly explored.",
+   "citing_sentence": "For instance, WebGPT uses a text-based web browsing environment to search and navigate the web #CITATION_TAG.",
+   "right_context": "More relatedly, recent work has investigated prompting LLMs to produce agents that can generalize to tasks based on a small number of in-context examples.",
+   "citing_paper": "2306.00245",
+   "cited_ref_id": "20d0ef6d1b305670b99e5f5fed0cbc00",
+   "n_citations_in_sentence": 1,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2306.00245",
+   "pdf_url": "https://arxiv.org/pdf/2306.00245",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2306.00245\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2306.00245\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 0.5,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2405.00201_10_0_88da29db",
+   "section": "Literature Review",
+   "left_context": "",
+   "citing_sentence": "#CITATION_TAG proposed a simple yet competitive parameter efficient fine-tuning method.",
+   "right_context": "Their approach involves freezing a majority of the network and exclusively fine-tuning the bias terms.",
+   "citing_paper": "2405.00201",
+   "cited_ref_id": "88da29db4bf971c5cc4874dc9eb25ef7",
+   "n_citations_in_sentence": 1,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2405.00201",
+   "pdf_url": "https://arxiv.org/pdf/2405.00201",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2405.00201\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2405.00201\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2512.01077_0_0_20656558",
+   "section": "Introduction",
+   "left_context": "",
+   "citing_sentence": "Indian natural language processing communities have seen a renewed wave of digitization of constitutional languages #CITATION_TAG, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION.",
+   "right_context": "However, most datasets focus on high-resource or officially recognized languages, overlooking India's tribal and indigenous diversity.",
+   "citing_paper": "2512.01077",
+   "cited_ref_id": "2065655810ea1798d4d9e02d8462c5f9",
+   "n_citations_in_sentence": 6,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2512.01077",
+   "pdf_url": "https://arxiv.org/pdf/2512.01077",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2512.01077\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2512.01077\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     },
+     {
+      "from_name": "secondary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Gap"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2306.00212_32_3_5338147b",
+   "section": "Related Work",
+   "left_context": "However, it is largely open to extend those sample-efficient online RL methods to constrained MGs due to several technical challenges.",
+   "citing_sentence": "First, since the Bellman optimality fails even in constrained MDPs #CITATION_TAG, #OTHER_CITATION and the optimal constrained policy is often stochastic #OTHER_CITATION, value-based RL methods are not suitable.",
+   "right_context": "Second, applying policy-based RL methods often warrants solving constrained policy optimization problems that are not convex #OTHER_CITATION, #OTHER_CITATION, not mentioning multi-agent policy optimization problems.",
+   "citing_paper": "2306.00212",
+   "cited_ref_id": "5338147b8bfbc5a57ab3f9df2c809728",
+   "n_citations_in_sentence": 3,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2306.00212",
+   "pdf_url": "https://arxiv.org/pdf/2306.00212",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2306.00212\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2306.00212\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Gap"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2510.00288_0_5_dc4deb9d",
+   "section": "Introduction",
+   "left_context": "While these explainable AI (XAI) techniques have proven valuable in revealing model behavior and identifying potential underlying flaws, so-called \"Clever Hans\" effects, or biases, they introduce a new challenge: the overwhelming variety of available XAI algorithms and their possible configurations.",
+   "citing_sentence": "Just as practitioners may struggle to select optimal model architectures or hyperparameters, there is now emerging equally complex task of choosing the right explainability method for a given use case #CITATION_TAG.",
+   "right_context": "This explainability challenge is especially relevant, for instance, in semantic matching tasks, where understanding why a model determined that two pieces of text are semantically similar or different is crucial for building user trust and ensuring reliable performance.",
+   "citing_paper": "2510.00288",
+   "cited_ref_id": "dc4deb9d3d59b1208925622531dc5f6c",
+   "n_citations_in_sentence": 1,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2510.00288",
+   "pdf_url": "https://arxiv.org/pdf/2510.00288",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2510.00288\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2510.00288\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2308.00081_54_1_747bfa27",
+   "section": "Conclusion and Recommendations",
+   "left_context": "No standard protocols for hyper-parameter sweeping, leading to incomparable and unreproducible results.",
+   "citing_sentence": "This led to the rather embarrassing result that a paper from 2020 #OTHER_CITATION threw into doubt the progress of the entire field over a decade since the early work on RESCAL in 2011 #CITATION_TAG.",
+   "right_context": "",
+   "citing_paper": "2308.00081",
+   "cited_ref_id": "747bfa27a803898ca6e3281e78763f53",
+   "n_citations_in_sentence": 2,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2308.00081",
+   "pdf_url": "https://arxiv.org/pdf/2308.00081",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2308.00081\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2308.00081\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Gap"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2503.00231_16_5_3290f816",
+   "section": "Jawaher",
+   "left_context": "We provide three types of translations of the proverbs: First, we provide (1) English equivalents for [MATH] Arabic proverbs—these are similar idiomatic and figurative expressions in English.",
+   "citing_sentence": "Since proverbs are inherently idiomatic, their translations should use common phrases and expressions of the target language #CITATION_TAG, #OTHER_CITATION, even if that means diverging from a literal translation to better capture the original's figurative or stylistic essence.",
+   "right_context": "Then, we offer (2) [MATH] English meanings of proverbs by paraphrasing them when English equivalent translations were not available.",
+   "citing_paper": "2503.00231",
+   "cited_ref_id": "3290f8167216336c313ff30ab7eda8be",
+   "n_citations_in_sentence": 2,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2503.00231",
+   "pdf_url": "https://arxiv.org/pdf/2503.00231",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2503.00231\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2503.00231\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2511.00160_7_1_dc56be3b",
+   "section": "Motivation",
+   "left_context": "The HumanEval dataset, released by OpenAI in 2021, was designed to test code generators using docstrings.",
+   "citing_sentence": "The benchmark, consists of 165 function headers and docstrings, solutions, and tests #CITATION_TAG.",
+   "right_context": "Using 100 of the provided solutions, we use Claude 3.5 Sonnet to generate two solutions: one solution is prompted for correctness and the other for a mistake.",
+   "citing_paper": "2511.00160",
+   "cited_ref_id": "dc56be3b92d64c428a1131c1aefbf127",
+   "n_citations_in_sentence": 1,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2511.00160",
+   "pdf_url": "https://arxiv.org/pdf/2511.00160",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2511.00160\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2511.00160\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2310.00486_23_2_b935972f",
+   "section": "Experiments",
+   "left_context": "The proposed I-CNF and S-CNF are compared to baselines of various types such as ensemble methods, Bayesian methods, and conditional generative models.",
+   "citing_sentence": "This includes deep ensemble (Ensemble) #OTHER_CITATION, Monte-Carlo dropout (MCDP) #OTHER_CITATION, Bayes-by-backprop (BBB) #OTHER_CITATION, conditional variational autoencoder (CVAE) #OTHER_CITATION, conditional argmax flow (A-CNF) #OTHER_CITATION, Dirichlet prior network (DPN) #CITATION_TAG, Gaussian process (GP) #OTHER_CITATION, and evidential deep learning (EDL) #OTHER_CITATION.",
+   "right_context": "We fit them to all available human annotations for all utterances in the training set, tune hyperparameters on the validation set, and report performance on the test set.",
+   "citing_paper": "2310.00486",
+   "cited_ref_id": "b935972fc133c7b635c0ad5a93633357",
+   "n_citations_in_sentence": 8,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2310.00486",
+   "pdf_url": "https://arxiv.org/pdf/2310.00486",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2310.00486\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2310.00486\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Comparison"
+       ]
+      }
+     },
+     {
+      "from_name": "secondary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2305.00567_1_2_402b8e04",
+   "section": "Introduction",
+   "left_context": "Similar to the single-task setting, offline MORL can utilize auxiliary logged datasets to minimize interactions, thus improving data efficiency and minimizing interactions when deploying agents in high-risk settings.",
+   "citing_sentence": "In addition to its practical utility, offline RL #OTHER_CITATION has enjoyed major successes in the last few years (#OTHER_CITATION, #OTHER_CITATION, #CITATION_TAG) on challenging high-dimensional environments for continuous control and game-playing.",
+   "right_context": "Our contributions in this work are two-fold in introducing benchmarking datasets and a new family of MORL, as described below.",
+   "citing_paper": "2305.00567",
+   "cited_ref_id": "402b8e0447e4789495670350880c768e",
+   "n_citations_in_sentence": 4,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2305.00567",
+   "pdf_url": "https://arxiv.org/pdf/2305.00567",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2305.00567\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2305.00567\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2512.00711_10_5_d3e93570",
+   "section": "Related Works",
+   "left_context": "Specifically, they exploited the feedback by analyzing the distortion of the transmitted signal, thereby improving the encoding ability of the DL-based model and achieving higher reconstruction quality.",
+   "citing_sentence": "On the other hand, the Attention DL-based JSCC (ADJSCC) was proposed to address the dynamics of the channel state information by exposing the DL models to a wide range of SNR values for parameter optimization #CITATION_TAG.",
+   "right_context": "With the development of the architecture for the DL models, the Swin Transformer #OTHER_CITATION was proposed to resolve the high computing complexity of the attention mechanism, and thus was adopted in #OTHER_CITATION for securing a more efficient system in both computing and communication resources in the semantic communication system.",
+   "citing_paper": "2512.00711",
+   "cited_ref_id": "d3e935707722a84955194de8fa760dec",
+   "n_citations_in_sentence": 1,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2512.00711",
+   "pdf_url": "https://arxiv.org/pdf/2512.00711",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2512.00711\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2512.00711\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Comparison"
+       ]
+      }
+     },
+     {
+      "from_name": "secondary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Gap"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2512.00711_2_1_92e345d1",
+   "section": "Introduction",
+   "left_context": "In FL, a central server actively and iteratively sends the model to be trained to the devices, i.e., the clients, that possess the data.",
+   "citing_sentence": "The clients train the model using their local data and transmit the updated models back to the server, which then aggregates them into a global model to achieve better generalization performance#CITATION_TAG.",
+   "right_context": "Several studies have been proposed to enhance the convergence performance of FL with scheduling policies #OTHER_CITATION, device-to-device communication links #OTHER_CITATION, or partial model personalization #OTHER_CITATION, whose efforts aim to alleviate the communication resource requirements and enable its deployment in the real world.",
+   "citing_paper": "2512.00711",
+   "cited_ref_id": "92e345d109272cb03e5fe68a4f53220e",
+   "n_citations_in_sentence": 1,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2512.00711",
+   "pdf_url": "https://arxiv.org/pdf/2512.00711",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2512.00711\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2512.00711\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2407.00809_96_0_2bac2dc1",
+   "section": "Appendix",
+   "left_context": "",
+   "citing_sentence": "We also trained models with the Linear Model of Coregionalization (equation 20, section 4.2.1) #OTHER_CITATION and the Multi-output Spectral-Mixture kernel #CITATION_TAG, but the results were not competitive and so we omit them here.",
+   "right_context": "",
+   "citing_paper": "2407.00809",
+   "cited_ref_id": "2bac2dc18f2869068a38cb6c112360c5",
+   "n_citations_in_sentence": 2,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2407.00809",
+   "pdf_url": "https://arxiv.org/pdf/2407.00809",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2407.00809\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2407.00809\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Comparison"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2310.20444_81_0_af4e2d33",
+   "section": "Results",
+   "left_context": "",
+   "citing_sentence": "To compare our results with other paper selection approaches from the literature #OTHER_CITATION, #OTHER_CITATION, #CITATION_TAG, we prepare and analyze a smaller conference sample with papers from 5 major AI conferences with our MAG data.",
+   "right_context": "The resulting citation metrics are depicted in Table [REF].",
+   "citing_paper": "2310.20444",
+   "cited_ref_id": "af4e2d33146cae9cc552bd9e6422d1c9",
+   "n_citations_in_sentence": 3,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2310.20444",
+   "pdf_url": "https://arxiv.org/pdf/2310.20444",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2310.20444\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2310.20444\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Comparison"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2302.00109_4_1_f1a5b175",
+   "section": "Introduction",
+   "left_context": "One classical and popular method to mitigate this issue is Graph-Regularized MLPs (GR-MLPs in short).",
+   "citing_sentence": "Generally, besides the basic supervised loss (e.g., cross-entropy), GR-MLPs employ an additional regularization term on the final node embeddings or predictions based on the graph structure #CITATION_TAG, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION.",
+   "right_context": "Though having different formulations, the basic idea is to make node embeddings/predictions smoothed over the graph structure.",
+   "citing_paper": "2302.00109",
+   "cited_ref_id": "f1a5b17505666f965759d63e9b5132ad",
+   "n_citations_in_sentence": 4,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2302.00109",
+   "pdf_url": "https://arxiv.org/pdf/2302.00109",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2302.00109\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2302.00109\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2407.21792_14_0_433ffc68",
+   "section": "Methods",
+   "left_context": "",
+   "citing_sentence": "We calculate the capabilities component from the following benchmarks: LogiQA #OTHER_CITATION, PIQA #OTHER_CITATION, Hellaswag #OTHER_CITATION, Winogrande #OTHER_CITATION, COPA #OTHER_CITATION, MedQA #OTHER_CITATION, ARC Challenge #OTHER_CITATION, MMLU #OTHER_CITATION, MATH #OTHER_CITATION, LAMBADA #OTHER_CITATION, GSM8K #CITATION_TAG, and BBH #OTHER_CITATION.",
+   "right_context": "We used a diverse set of model classes and derivatives to avoid skewing results towards any particular model architecture, listing the 27 base models and 26 chat/instruct fine-tuned models used for our analysis in the Appendix.",
+   "citing_paper": "2407.21792",
+   "cited_ref_id": "433ffc68f27ed468c577d41532244c91",
+   "n_citations_in_sentence": 12,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2407.21792",
+   "pdf_url": "https://arxiv.org/pdf/2407.21792",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2407.21792\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2407.21792\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2510.27584_25_2_9d52c01b",
+   "section": "Method",
+   "left_context": "Direct computation is infeasible.",
+   "citing_sentence": "We define a continuous surrogate using the pre-threshold logits [MATH]: [MATH] Modeling [MATH] as zero-mean Gaussian, the differential entropy is [MATH] #CITATION_TAG.",
+   "right_context": "Maximizing [MATH] spreads the vectors along independent directions, increasing diversity after thresholding.",
+   "citing_paper": "2510.27584",
+   "cited_ref_id": "9d52c01bf7849c24eede74b8c1ebe7db",
+   "n_citations_in_sentence": 1,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2510.27584",
+   "pdf_url": "https://arxiv.org/pdf/2510.27584",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2510.27584\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2510.27584\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Application"
+       ]
+      }
+     },
+     {
+      "from_name": "secondary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Evidence"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2411.00225_8_0_1171f005",
+   "section": "Related Works",
+   "left_context": "",
+   "citing_sentence": "To achieve longer videos and increased spatial resolution, #CITATION_TAG proposes a cascade of temporal and spatial upsampling UNets.",
+   "right_context": "Other methods employ similar schemes of cascaded models for long video generation #OTHER_CITATION.",
+   "citing_paper": "2411.00225",
+   "cited_ref_id": "1171f005bc5e4f8a07dfaf93dcaed45c",
+   "n_citations_in_sentence": 1,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2411.00225",
+   "pdf_url": "https://arxiv.org/pdf/2411.00225",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2411.00225\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2411.00225\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Comparison"
+       ]
+      }
+     },
+     {
+      "from_name": "secondary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Gap"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2304.00078_43_6_6bc8ca48",
+   "section": "Results",
+   "left_context": "(d) limited to specific tasks and types of data sets #CITATION_TAG, #OTHER_CITATION, or",
+   "citing_sentence": "(e) not suitable for their own problems #CITATION_TAG, #OTHER_CITATION, #OTHER_CITATION.",
+   "right_context": "This raises demand for custom tools but many teams lack the resources and engineering support.",
+   "citing_paper": "2304.00078",
+   "cited_ref_id": "6bc8ca484d50a67573ea74fef0a35321",
+   "n_citations_in_sentence": 3,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2304.00078",
+   "pdf_url": "https://arxiv.org/pdf/2304.00078",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2304.00078\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2304.00078\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Gap"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2505.00209_42_3_6a4ca938",
+   "section": "Results",
+   "left_context": "Here we investigate metrics to evaluate different aspects of motion on a per-video basis.",
+   "citing_sentence": "We source generated videos from the \"solid-solid\" split of VideoPhy #CITATION_TAG, which contains videos generated by 8 different models, and EvalCrafter #OTHER_CITATION, using 11 different models.",
+   "right_context": "Although these datasets include human evaluations, they do not contain enough information to evaluate consistency between raters, and describe general motion-related dimensions in aggregate.",
+   "citing_paper": "2505.00209",
+   "cited_ref_id": "6a4ca938f439ae7b596faf0d361ee89c",
+   "n_citations_in_sentence": 2,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2505.00209",
+   "pdf_url": "https://arxiv.org/pdf/2505.00209",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2505.00209\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2505.00209\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Gap"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2405.00181_1_1_d4facd19",
+   "section": "Introduction",
+   "left_context": "Anomalies represent occurrences or scenarios that deviate from the norm, defying expectations and straying from routine conditions #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION.",
+   "citing_sentence": "These events are typically characterized by their unique, sudden, or infrequent nature, often demanding special attention or intervention #CITATION_TAG.",
+   "right_context": "",
+   "citing_paper": "2405.00181",
+   "cited_ref_id": "d4facd1996ed8b5caed5ded13b1b4b3d",
+   "n_citations_in_sentence": 1,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2405.00181",
+   "pdf_url": "https://arxiv.org/pdf/2405.00181",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2405.00181\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2405.00181\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2512.24787_11_0_7b770b46",
+   "section": "Related Work",
+   "left_context": "",
+   "citing_sentence": "Standard pointwise recommendation methods #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION, #CITATION_TAG, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION score user-item pairs independently.",
+   "right_context": "Although effective for individual feedback prediction such as CTR, they largely ignore inter-item dependencies and positional effects.",
+   "citing_paper": "2512.24787",
+   "cited_ref_id": "7b770b46fe572890d9038bf29f16f56a",
+   "n_citations_in_sentence": 7,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2512.24787",
+   "pdf_url": "https://arxiv.org/pdf/2512.24787",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2512.24787\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2512.24787\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Comparison"
+       ]
+      }
+     },
+     {
+      "from_name": "secondary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Gap"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2305.19598_64_3_3bb9c412",
+   "section": "Experiments",
+   "left_context": "A possible explanation is that the Letter-high dataset contains smaller graphs (4.67 nodes in a graph on average) and relatively simple structures.",
+   "citing_sentence": "Graph Neural Networks (GNNs) #OTHER_CITATION, #CITATION_TAG, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION boost the performance in graph classification via learning deep representations of graphs as well as utilizing node attributes.",
+   "right_context": "Despite their performance gain, they lack the ability to utilize unlabeled data and fall short in detecting OOD samples.",
+   "citing_paper": "2305.19598",
+   "cited_ref_id": "3bb9c4125e011e42c8a0bd7df65e17ed",
+   "n_citations_in_sentence": 6,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2305.19598",
+   "pdf_url": "https://arxiv.org/pdf/2305.19598",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2305.19598\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2305.19598\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2511.00260_0_1_5c327a23",
+   "section": "Introduction",
+   "left_context": "Colonoscopy is central to colorectal cancer detection and surveillance, yet the endoscopist sees only a small local patch of the mucosal surface at any instant.",
+   "citing_sentence": "Linking that live view to a stable 3D anatomical reference could support anatomy-aware navigation, coverage assessment, revisited-region awareness, and lesion site contextualization in a common coordinate system #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION, #CITATION_TAG.",
+   "right_context": "When CT-derived colon geometry is available #OTHER_CITATION, this objective can be viewed as registering intraoperative endoscopic observations to preoperative anatomy, an important step toward augmented colonoscopic guidance.",
+   "citing_paper": "2511.00260",
+   "cited_ref_id": "5c327a23759b37061821f333e7018620",
+   "n_citations_in_sentence": 5,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2511.00260",
+   "pdf_url": "https://arxiv.org/pdf/2511.00260",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2511.00260\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2511.00260\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2310.00517_3_0_4699cf99",
+   "section": "Introduction",
+   "left_context": "",
+   "citing_sentence": "Despite the advantages of transfer learning, there is a risk that the pre-trained representations may not fully adapt to the target dataset #CITATION_TAG.",
+   "right_context": "Self-supervised learning (SSL) has emerged as a promising solution.",
+   "citing_paper": "2310.00517",
+   "cited_ref_id": "4699cf99b7505f85c2642f60d2622b49",
+   "n_citations_in_sentence": 1,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2310.00517",
+   "pdf_url": "https://arxiv.org/pdf/2310.00517",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2310.00517\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2310.00517\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Gap"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2306.00186_51_7_364160a3",
+   "section": "Related Work",
+   "left_context": "Our reward requires a single forward pass using a transformer model over the document-summary pair, in comparison, QA-QG approaches require generating answer candidates, questions, answers from both sources and computing answer alignment.",
+   "citing_sentence": "Some of this complexity is remedied by generating jointly questions-and-answers #CITATION_TAG, but it still requires a lengthy decoding of QA pairs.",
+   "right_context": "A different NLI-based approach decomposes the document and summary into smaller blocks of sentences #OTHER_CITATION and aggregates the final decision over a matrix of block-level NLI scores.",
+   "citing_paper": "2306.00186",
+   "cited_ref_id": "364160a3017e2dd1daa3b08e3f6d3451",
+   "n_citations_in_sentence": 1,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2306.00186",
+   "pdf_url": "https://arxiv.org/pdf/2306.00186",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2306.00186\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2306.00186\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Comparison"
+       ]
+      }
+     },
+     {
+      "from_name": "secondary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Gap"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2411.00225_4_0_ceef8225",
+   "section": "Introduction",
+   "left_context": "",
+   "citing_sentence": "Diffusion models #OTHER_CITATION, #CITATION_TAG, #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION have shown promising results on various video synthesis tasks, such as text-to-video generation #OTHER_CITATION and image-to-video generation #OTHER_CITATION, #OTHER_CITATION, #OTHER_CITATION.",
+   "right_context": "However, a key challenge is generating longer videos, while maintaining temporal consistency and adhering to computational and memory constraints.",
+   "citing_paper": "2411.00225",
+   "cited_ref_id": "ceef8225ac6584cfe3e3dc07dff62b4d",
+   "n_citations_in_sentence": 9,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2411.00225",
+   "pdf_url": "https://arxiv.org/pdf/2411.00225",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2411.00225\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2411.00225\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2307.00083_5_3_91136d14",
+   "section": "New method",
+   "left_context": "There are [MATH] variables in the minimization problem.",
+   "citing_sentence": "The first four variables are transformation parameters [MATH] for the spatial transformer #CITATION_TAG which determine the extracted patch from the input image.",
+   "right_context": "The extracted patch is denoted by [MATH].",
+   "citing_paper": "2307.00083",
+   "cited_ref_id": "91136d145e2920e2e633175560a1034e",
+   "n_citations_in_sentence": 1,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2307.00083",
+   "pdf_url": "https://arxiv.org/pdf/2307.00083",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2307.00083\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2307.00083\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Application"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2405.00201_37_0_6204b21c",
+   "section": "Appendix",
+   "left_context": "",
+   "citing_sentence": "#CITATION_TAG - Creative Commons Share-Alike 3.0 Unported License (allows all content to be freely used, modified, and shared under permissive terms)), The Stanford Question Answering Dataset (QNLI:",
+   "right_context": "",
+   "citing_paper": "2405.00201",
+   "cited_ref_id": "6204b21cbfeff1ab975f6935c6f81491",
+   "n_citations_in_sentence": 1,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2405.00201",
+   "pdf_url": "https://arxiv.org/pdf/2405.00201",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2405.00201\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2405.00201\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2306.00212_49_1_2820cf34",
+   "section": "Efficient Implementation of [REF]",
+   "left_context": "Now, we state an efficient implementation for the primal update [REF] by solving convex optimization problems.",
+   "citing_sentence": "The proof is based on the method of Lagrange multipliers and the Lagrange duality theory; they also find uses in the literature #OTHER_CITATION, #CITATION_TAG, #OTHER_CITATION.",
+   "right_context": "",
+   "citing_paper": "2306.00212",
+   "cited_ref_id": "2820cf34f5ea852441842c25aa561df3",
+   "n_citations_in_sentence": 3,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2306.00212",
+   "pdf_url": "https://arxiv.org/pdf/2306.00212",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2306.00212\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2306.00212\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Basis"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "data": {
+   "id": "2507.00292_1_3_792fd7e3",
+   "section": "Introduction",
+   "left_context": "The performance of models often varies between runs, making it hard to compare models and tune hyperparameters.",
+   "citing_sentence": "This problem appears in many DL fields #OTHER_CITATION, #OTHER_CITATION, such as natural language processing #OTHER_CITATION, generative adversarial networks #OTHER_CITATION, deep reinforcement learning #OTHER_CITATION, and image recognition #CITATION_TAG.",
+   "right_context": "This issue also affects digital pathology for WSI classification with MIL.",
+   "citing_paper": "2507.00292",
+   "cited_ref_id": "792fd7e376f52be463461ba7106453cc",
+   "n_citations_in_sentence": 6,
+   "llm_agreement": true,
+   "abs_url": "https://arxiv.org/abs/2507.00292",
+   "pdf_url": "https://arxiv.org/pdf/2507.00292",
+   "links_html": "arXiv: <a href=\"https://arxiv.org/abs/2507.00292\" target=\"_blank\" style=\"text-decoration: underline;\">Resumen</a> <br/>arXiv: <a href=\"https://arxiv.org/pdf/2507.00292\" target=\"_blank\" style=\"text-decoration: underline;\">Documento PDF</a>"
+  },
+  "predictions": [
+   {
+    "model_version": "ollama:llama3.1:8b",
+    "score": 1.0,
+    "result": [
+     {
+      "from_name": "primary",
+      "to_name": "citing_sentence",
+      "type": "choices",
+      "value": {
+       "choices": [
+        "Background"
+       ]
+      }
+     }
+    ]
+   }
+  ]
+ }
+]

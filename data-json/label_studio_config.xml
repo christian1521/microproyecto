@@ -1,0 +1,51 @@
+<View>
+  <Header value="Original article cited"/>
+  <HyperText name="links" value="$links_html" inline="true" clickableLinks="true" selectionEnabled="false"/>
+
+  <Header value="Section"/>
+  <Text name="section" value="$section"/>
+
+  <Header value="Context (before)"/>
+  <Text name="left_context" value="$left_context"/>
+
+  <Header value="Citing sentence (annotate the function of #CITATION_TAG)"/>
+  <Text name="citing_sentence" value="$citing_sentence"/>
+
+  <Header value="Context (after)"/>
+  <Text name="right_context" value="$right_context"/>
+
+  <Header value="PRIMARY function (obligatorio, seleccione una)"/>
+  <Header size="5" value="Atajos: 1 Application | 2 Improvement / Modification | 3 Further Reading | 4 Originator | 5 Comparison | 6 Gap | 7 Evidence | 8 Basis | 9 Background"/>
+  <Choices name="primary" toName="citing_sentence" choice="single" required="true" showInline="false">
+    <Choice value="Application" hotkey="1" hint="¿Usa algo de ese trabajo (método, herramienta, dato, modelo)? Si lo usa, pero sin cambios."/>
+    <Choice value="Improvement / Modification" hotkey="2" hint="¿Usa algo de ese trabajo (método, herramienta, dato, modelo)? Si lo usa, pero con cambios o adaptaciones."/>
+    <Choice value="Further Reading" hotkey="3" hint="¿Remite al lector a esa fuente para más detalle? (see, we refer to, details in)."/>
+    <Choice value="Identification of the Originator" hotkey="4" hint="¿Atribuye explícitamente la autoría de una idea? (first proposed by, introduced in)."/>
+    <Choice value="Comparison" hotkey="5" hint="¿Contrasta o compara propiedades o resultados con otro trabajo?."/>
+    <Choice value="Gap" hotkey="6" hint="¿Señala una carencia o algo no hecho que motiva este trabajo?."/>
+    <Choice value="Evidence" hotkey="7" hint="¿Respalda una afirmación, hallazgo o decisión de diseño de este artículo?."/>
+    <Choice value="Basis" hotkey="8" hint="¿Es la idea sobre la que se construye este trabajo, sin usar su método directamente?."/>
+    <Choice value="Background" hotkey="9" hint="Si no coincide con ninguna de las anteriores, podemos clasificarla como contexto general."/>
+  </Choices>
+
+  <Header value="SECONDARY function (opcional, seleccione solo si resulta evidente)"/>
+  <Header size="5" value="Atajos: Mayús + 1 a 9 (misma numeración que la principal)"/>
+  <Choices name="secondary" toName="citing_sentence" choice="single" showInline="false">
+    <Choice value="Application" hotkey="shift+1" hint="¿Usa algo de ese trabajo (método, herramienta, dato, modelo)? Si lo usa, pero sin cambios."/>
+    <Choice value="Improvement / Modification" hotkey="shift+2" hint="¿Usa algo de ese trabajo (método, herramienta, dato, modelo)? Si lo usa, pero con cambios o adaptaciones."/>
+    <Choice value="Further Reading" hotkey="shift+3" hint="¿Remite al lector a esa fuente para más detalle? (see, we refer to, details in)."/>
+    <Choice value="Identification of the Originator" hotkey="shift+4" hint="¿Atribuye explícitamente la autoría de una idea? (first proposed by, introduced in)"/>
+    <Choice value="Comparison" hotkey="shift+5" hint="¿Contrasta o compara propiedades o resultados con otro trabajo?."/>
+    <Choice value="Gap" hotkey="shift+6" hint="¿Señala una carencia o algo no hecho que motiva este trabajo?."/>
+    <Choice value="Evidence" hotkey="shift+7" hint="¿Respalda una afirmación, hallazgo o decisión de diseño de este artículo?."/>
+    <Choice value="Basis" hotkey="shift+8" hint="¿Es la idea sobre la que se construye este trabajo, sin usar su método directamente?."/>
+    <Choice value="Background" hotkey="shift+9" hint="Si no coincide con ninguna de las anteriores, podemos clasificarla como contexto general."/>
+  </Choices>
+
+  <Header value="Flags"/>
+  <Choices name="flags" toName="citing_sentence" choice="multiple" showInline="true">
+    <Choice value="Needs wider context" hint="Se necesita contexto adicional para soportar la selección de la función de cita."/>
+    <Choice value="Unclear / ambiguous" hint="No se puede decidir con la información disponible."/>
+    <Choice value="Not a real citation (noise / parsing error)" hint="Error de extracción o información incompleta."/>
+  </Choices>
+</View>
